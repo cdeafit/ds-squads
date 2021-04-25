@@ -3,7 +3,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 img = cv2.imread('metal1.jpg',0)
-
+#testeo
+print('gitTest2')
 # Blurring 
 blurred = cv2.bilateralFilter(img,15,150,150)
 img = np.uint8(img)
