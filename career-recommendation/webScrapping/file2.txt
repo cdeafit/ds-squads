@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <title>
+   Carrera Profesional, Diseño Crossmedia. Universidad Cooperativa de Colombia - Medellín
+  </title>
+  <meta content="Carrera Profesional: Diseño Crossmedia. El programa en Diseño Crossmedia, tiene como objeto de estudio: La integración estratégica de los medios de comunicación teniendo en cuenta su teorías y lenguajes específicos en la creación de contenidos interactivos, usables y accesibles desde la narrativa no lineal, para garantizar al prosumidor (productor – consumidor) una correcta relación e interpretación del mensaje, de acuerdo al contexto social en que se desenvuelve." name="description">
+   <meta content="Carrera Profesional,diseño crossmedia, estudios, universidad cooperativa, colombia, medellin, donde estudiar diseño crossmedia,DISEñO CROSSMEDIA, ESTUDIOS, UNIVERSIDAD COOPERATIVA, COLOMBIA, MEDELLIN, DONDE ESTUDIAR DISEñO CROSSMEDIA,Diseño crossmedia,Estudios,Universidad cooperativa,Colombia,Medellin,Donde estudiar diseño crossmedia" name="keywords"/>
+   <meta content="Carrera Profesional, Diseño Crossmedia. Universidad Cooperativa de Colombia - Medellín" itemprop="name"/>
+   <meta content="Carrera Profesional: Diseño Crossmedia. El programa en Diseño Crossmedia, tiene como objeto de estudio: La integración estratégica de los medios de comunicación teniendo en cuenta su teorías y lenguajes específicos en la creación de contenidos interactivos, usables y accesibles desde la narrativa no lineal, para garantizar al prosumidor (productor – consumidor) una correcta relación e interpretación del mensaje, de acuerdo al contexto social en que se desenvuelve." itemprop="description"/>
+   <meta content="Carrera Profesional,diseño crossmedia, estudios, universidad cooperativa, colombia, medellin, donde estudiar diseño crossmedia,DISEñO CROSSMEDIA, ESTUDIOS, UNIVERSIDAD COOPERATIVA, COLOMBIA, MEDELLIN, DONDE ESTUDIAR DISEñO CROSSMEDIA,Diseño crossmedia,Estudios,Universidad cooperativa,Colombia,Medellin,Donde estudiar diseño crossmedia" itemprop="keywords"/>
+   <meta content="es_ES" property="og:locale">
+    <meta content="article" property="og:type">
+     <meta content="Carrera Profesional, Diseño Crossmedia. Universidad Cooperativa de Colombia - Medellín" property="og:title">
+      <meta content="Carrera Profesional: Diseño Crossmedia. El programa en Diseño Crossmedia, tiene como objeto de estudio: La integración estratégica de los medios de comunicación teniendo en cuenta su teorías y lenguajes específicos en la creación de contenidos interactivos, usables y accesibles desde la narrativa no lineal, para garantizar al prosumidor (productor – consumidor) una correcta relación e interpretación del mensaje, de acuerdo al contexto social en que se desenvuelve." property="og:description"/>
+      <meta content="https://orientacion.universia.net.co/imgs2011/imagenes/fachada-or-2014_09_24_190643.jpg" property="og:image"/>
+      <meta content="https://orientacion.universia.net.co/que_estudiar/universidad-cooperativa-de-colombia---medellin-305.html" property="og:url"/>
+      <meta content="Orienta" property="og:site_name"/>
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+       <meta content="width=device-width, initial-scale=1" name="viewport"/>
+       <meta content="noindex" name="facebookexternalhit"/>
+       <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+       <link href="/resources_front/ajs/cookies_agree/cookies.css?ver=02" rel="stylesheet" type="text/css">
+        <script src="/resources_front/js/jquery_n.js" type="text/javascript">
+        </script>
+        <script src="/resources_front/js/popper.min.js" type="text/javascript">
+        </script>
+        <script src="/resources_front/js/bootstrap.js" type="text/javascript">
+        </script>
+        <link href="/resources_front/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="/resources_front/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+        <link href="/resources_front/css/ElgTColStyles.css?ver=01" rel="stylesheet" type="text/css"/>
+        <!--<link href="/resources_front/css/BlueCustom.css" type="text/css" rel="stylesheet">-->
+        <!--<link href="/resources_front/css/GreenCustom.css" type="text/css" rel="stylesheet">-->
+        <!--<link href="/resources_front/css/OrangeCustom.css" type="text/css" rel="stylesheet">-->
+        <!--<link href="/resources_front/css/redCustom.css" type="text/css" rel="stylesheet">-->
+        <!--<link href="/resources_front/css/LimtlcCustom.css" type="text/css" rel="stylesheet">-->
+        <!--<link href="/resources_front/css/YellowCustom.css" type="text/css" rel="stylesheet">-->
+        <input id="urlportaldouble_click" name="urlportaldouble_click" type="hidden" value="co.universia.estudiarenelexterior"/>
+        <input id="acronimo_portal" name="acronimo_portal" type="hidden" value="CO"/>
+        <input id="world_procedencia" name="world_procedencia" type="hidden" value="ORIENTACION_CO"/>
+        <input id="buscador_second_de3_msj_error4" name="buscador_second_de3_msj_error4" type="hidden" value="No ha seleccionado"/>
+        <input id="var_urlF_buscador_8" name="var_urlF_buscador_8" type="hidden" value="/buscar8/carreras-universitarias-en-"/>
+        <input id="var_urlF_buscador_7" name="var_urlF_buscador_7" type="hidden" value="/buscar7/"/>
+        <input id="var_urlF_buscador_6" name="var_urlF_buscador_6" type="hidden" value="/buscar6/carreras-universitarias-en-"/>
+        <input id="var_urlF_buscador_5" name="var_urlF_buscador_5" type="hidden" value="/buscar5/"/>
+        <input id="var_urlF_buscador_4" name="var_urlF_buscador_4" type="hidden" value="/buscar4/universidades-de-"/>
+        <input id="var_urlF_buscador_3" name="var_urlF_buscador_3" type="hidden" value="/buscar3/list/"/>
+        <input id="var_urlF_buscador_2" name="var_urlF_buscador_2" type="hidden" value="/buscar2/donde-estudiar/"/>
+        <input id="var_urlF_buscador_1" name="var_urlF_buscador_1" type="hidden" value="/buscar1/universidades-de-"/>
+        <script src="/resources_front/js/commons_todotodo.js?ver=02" type="text/javascript">
+        </script>
+        <link href="/resources_front/css/carousel-sponsr.css" rel="stylesheet" type="text/css"/>
+        <link href="/resources_front/js/chosen/chosen.css" rel="stylesheet" type="text/css"/>
+        <script src="/resources_front/js/chosen/chosen.jquery.js" type="text/javascript">
+        </script>
+        <script src="/resources_front/js/Valores_Colegios.js" type="text/javascript">
+        </script>
+        <script language="javascript" src="/resources_front/ajs/quitaracentos.js" type="text/javascript">
+        </script>
+        <script src="/resources_front_ownportal/code_init_doubleclick.js" type="text/javascript">
+        </script>
+        <script language="javascript" src="/resources_front/ajs/fechamiga.js">
+        </script>
+        <script language="javascript" src="/resources_front/ajs/valida_campos_agr.js?ver=05" type="text/javascript">
+        </script>
+        <script language="javascript" src="/resources_front/ajs/ajax_funcional2013/ajax_2013.js?ver=b05" type="text/javascript">
+        </script>
+        <script async="" defer="" src="https://www.google.com/recaptcha/api.js">
+        </script>
+        <div id="fb-root">
+        </div>
+        <script src="/resources_front/js/commons_face.js" type="text/javascript">
+        </script>
+        <input id="mobile_browser" name="mobile_browser" type="hidden" value="0"/>
+        <link href="/resources_front/css/alternativo_while.css?ver=02" rel="stylesheet" type="text/css"/>
+        <script language="javascript" src="/resources_front/ajs/recuperaFormularioSolicitud.js?ver=b035" type="text/javascript">
+        </script>
+        <script language="javascript" src="/resources_front/js/commons_recupera_formulario.js?ver=02" type="text/javascript">
+        </script>
+        <script src="/resources_front/js/google_analytics_CO.js" type="text/javascript">
+        </script>
+        <script src="/resources_front/ajs/animatedcollapse.js" type="text/javascript">
+        </script>
+        <script src="/resources_front/ajs/animatedcollapse-init-entries-own.js?ver=03" type="text/javascript">
+        </script>
+       </link>
+      </meta>
+     </meta>
+    </meta>
+   </meta>
+  </meta>
+ </head>
+ <body>
+  <header>
+   <div class="headerPddg SchoolHeader">
+    <img src="/imgs2011/imagenes/cooperativ_T2019M03D01_151225@2x.jpg"/>
+   </div>
+   <section class="Dateheader">
+    <div class="container">
+     <p>
+      Colombia,
+      <a href="/index.html">
+       Home
+      </a>
+      <p>
+      </p>
+     </p>
+    </div>
+   </section>
+   <section class="MenuSchoolBox navAbs">
+    <div class="container">
+     <div class="navbar-header NavColgHeader">
+      <button aria-expanded="false" class="navbar-toggle MenuCol collapsed" data-target="#MenullCol" data-toggle="collapse" type="button">
+       <span class="sr-only">
+        Menú
+       </span>
+       <span class="icon-bar">
+       </span>
+       <span class="icon-bar">
+       </span>
+       <span class="icon-bar">
+       </span>
+      </button>
+     </div>
+     <!-- menu-->
+     <div class="collapse navbar-collapse dpCOlNavSc" id="MenullCol">
+      <nav class="navbar-collapse" role="navigation">
+       <ul class="nav navbar-nav NavColBack">
+        <li class="dropdown">
+         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          ACERCA DE LA INSTITUCIÓN
+          <span class="caret">
+          </span>
+         </a>
+         <ul class="dropdown-menu RlNavrwd">
+          <li>
+           <a class="animateuext" href="/que_estudiar/universidad-cooperativa-de-colombia---medellin-305.html">
+            Inicio
+           </a>
+          </li>
+          <li>
+           <a class="animateuext" href="#ira004t">
+            Twitter
+           </a>
+          </li>
+          <li>
+           <a class="animateuext" href="#ira0005f">
+            Facebook
+           </a>
+          </li>
+          <li>
+           <a class="animateuext" href="#ira000campus">
+            Campus
+           </a>
+          </li>
+          <li>
+           <a class="animateuext" href="#ira000ventajas">
+            Ventajas
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li>
+         <a href="#solicitarinformaciongeneral">
+          SOLICITAR INFORMACIÓN
+         </a>
+        </li>
+        <li>
+         <a href="/que_estudiar/universidad-cooperativa-de-colombia---medellin-305.html#puedeencontrarinformacion">
+          OFERTA ACADÉMICA
+         </a>
+        </li>
+        <li>
+         <a href="/index.html">
+          <span class="back">
+          </span>
+          Ir a home
+         </a>
+        </li>
+       </ul>
+      </nav>
+     </div>
+     <!-- end menu-->
+    </div>
+   </section>
+  </header>
+  <span class="clearing">
+  </span>
+  <section class="container">
+   <div id="ContSchl">
+    <div class="AllctSchool">
+     <div class="row">
+      <input id="prefixcountry" name="prefixcountry" type="hidden" value="1"/>
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+       <section class="col-lg-8 col-md-12 ColClear sectionUniversity">
+        <div class="TitleCole">
+         <h1 class="nopadding">
+          Universidad Cooperativa de Colombia - Medellín
+         </h1>
+         <div class="vigilada">
+          <h2>
+           "Vigilada Mineducación"
+          </h2>
+         </div>
+         (Presencial)
+        </div>
+        <div class="ColBoxMarg">
+         <div class="SchlTxtNew">
+          <h1 class="nopadding">
+           Diseño Crossmedia
+          </h1>
+         </div>
+         <p>
+          El programa en Diseño Crossmedia, tiene como objeto de estudio: La integración estratégica de los medios de comunicación teniendo en cuenta su teorías y lenguajes específicos en la creación de contenidos interactivos, usables y accesibles desde la narrativa no lineal, para garantizar al prosumidor (productor – consumidor) una correcta relación e interpretación del mensaje, de acuerdo al contexto social en que se desenvuelve.
+         </p>
+         <br/>
+         <table class="TablaSnies">
+          <tr>
+           <td>
+            <strong>
+             SNIES:
+            </strong>
+           </td>
+           <td>
+            105928
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             Registro calificado:
+            </strong>
+           </td>
+           <td>
+            Resolución 19892 del 18 de octubre de 2016, vigencia 7 años
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             Nivel de formación:
+            </strong>
+           </td>
+           <td>
+            Posgrado
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             Tipo de formación:
+            </strong>
+           </td>
+           <td>
+            Especialización Universitaria
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             Título otorgado:
+            </strong>
+           </td>
+           <td>
+            Diseñador Crossmedia
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             Modalidad:
+            </strong>
+           </td>
+           <td>
+            Presencial
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             Duración:
+            </strong>
+           </td>
+           <td>
+            8 Semestres
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <strong>
+             Créditos:
+            </strong>
+           </td>
+           <td>
+            141
+           </td>
+          </tr>
+         </table>
+         <div class="SchlImg">
+          <div class="AsideVideo">
+           <div class="VideoAsideCol">
+            <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/tD2OrsYl5CI" width="560">
+            </iframe>
+           </div>
+          </div>
+         </div>
+         <span class="clearing">
+         </span>
+         <div class="DescrpBox">
+          <div class="SchlTxtNew">
+           <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="eLayout_R7C2">
+             <h1>
+              Campos de acción
+             </h1>
+             El egresado de Diseño Crossmedia podrá desempeñarse en agencias de publicidad; estudios de diseño; departamentos creativos y unidades administrativas de comunicación y mercadeo en empresas; equipos multidisciplinarios para la creación de contenidos educativos, informativos, productivos o publicitarios; proyectos de entidades públicas y privadas que incluyan contenidos crossmedia; empresas editoriales y medios de comunicación; en los servicios de televisión digital y canales de televisión pública y privada; en multinacionales de la industria del entretenimiento, cinematográfica y publicitaria; además en empresas de desarrollo de software en la construcción gráfica de interfaces. Una de sus grandes fortalezas será la creación de empresas en el campo del Diseño Crossmedia.
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="eLayout_R7C3">
+             <h1>
+              <span aria-hidden="true" class="fa fa-list-ol">
+              </span>
+              Razones para estudiar este programa
+             </h1>
+             La formación del Diseñador Crossmedia de la Universidad Cooperativa de Colombia presenta una relación intrínseca entre la fundamentación teórica del diseño, la comunicación, la interactividad y usabilidad con el que hacer práctico, para agregar valor en los diferentes productos crossmedia que desarrollará el futuro profesional, para responder así a las demandas del Cluster de la región y que respondan a estándares nacionales e internacionales.
+             <br>
+              <br/>
+              Por otra parte, el componente de diseño visual, dentro del crossmedia, promueve espacios de reflexión en cuanto a la estética de los contenidos y se concibe como un componente de integración e interpretación de los elementos de composición gráfica, y así mismo abre un espacio para el desarrollo del pensamiento creativo, la conceptualización y el entendimiento de la imagen como parte fundamental en la creación de cualquier producto crossmedia.
+              <br/>
+              <br/>
+              La inclusión del diseño audiovisual, el diseño de interfaces gráficas, las narrativas digitales, la infografía, los lenguajes de programación junto con el pensamiento sistémico, la investigación y el emprendimiento, preparan al estudiante para afrontar los cambios, culturales, laborales, tecnológicos y comunicacionales de la sociedad y son considerados como factores diferenciales en la formación integral del diseñador en este pregrado.
+             </br>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <!--colbox,arg-->
+        <a name="solicitarinformaciongeneral">
+        </a>
+        <span class="clearing">
+        </span>
+        <div class="ColBoxMarg">
+         <div class="SchlTxt">
+          <h1 id="solicitarmasinformacionn">
+           CONTACTAR
+          </h1>
+         </div>
+        </div>
+        <div id="ColForm">
+         <div class="SolInfoForm">
+          <div class="entryFormContainer" id="entryForm1ContainerGRAL2014">
+           ...Cargando formulario
+          </div>
+         </div>
+        </div>
+        <form class="noride_inleads" id="form_initial_leads" name="form_initial_leads">
+         <input id="form_initial_leads_formularioReducido" name="form_initial_leads_formularioReducido" type="hidden" value="Si"/>
+         <input id="form_initial_leads_cuentaentries" name="form_initial_leads_cuentaentries" type="hidden" value="1"/>
+         <input id="form_initial_leads_idduv" name="form_initial_leads_idduv" type="hidden" value="305 "/>
+         <input id="form_initial_leads_lacarreraesid2013" name="form_initial_leads_lacarreraesid2013" type="hidden" value="6239"/>
+         <input id="form_initial_leads_laurlretorno" name="form_initial_leads_laurlretorno" type="hidden" value="https://orientacion.universia.net.co"/>
+         <input id="form_initial_leads_eldivOut" name="form_initial_leads_eldivOut" type="hidden" value="entryForm1ContainerGRAL2014"/>
+         <input id="form_initial_leads_loc_nivel" name="form_initial_leads_loc_nivel" type="hidden" value="1"/>
+         <input id="form_initial_procedencia_cursos_ovacio" name="form_initial_leads_procedencia_cursos_ovacio" type="hidden" value="CURSOS_CO"/>
+        </form>
+       </section>
+       <aside class="col-lg-4 col-md-12 ColClear paddingside40">
+        <!--Agendamiento --->
+        <!-- div class="ColBox">
+
+                    <form action="#" method="get" class="DirctWrap">
+
+                        <button id="BtnParents">
+
+                            <p><span class="CalendarBigIc"></span>Si desea atención personalizada</p>
+
+                            <span class="BtnParentsIcon"></span>
+
+                            <div class="btnBigIcBox">
+
+                                <a href="#" class="btnBigIc">Agende su cita</a>
+
+                            </div>
+
+                        </button>
+
+                    </form>
+
+                </div-->
+        <div class="ColBox">
+         <div class="panel panel-default">
+          <div class="panel-heading AsideTitle">
+           <h3>
+            Buscar por niveles de formación
+           </h3>
+           <div class="BoxTitleSeparate marginUpDw5">
+            <div class="TipSeparate">
+            </div>
+           </div>
+          </div>
+          <div class="panel-body">
+           <div class="AsideList">
+            <ul>
+             <li>
+              <a href="/pregrados/universidad-cooperativa-de-colombia---medellin/listado/productos/1/305.html">
+               <i class="redvineta">
+                » &amp;Congruent
+               </i>
+               Pregrados
+              </a>
+             </li>
+             <li>
+              <a href="/especializaciones/universidad-cooperativa-de-colombia---medellin/listado/productos/11/305.html">
+               <i class="redvineta">
+                » &amp;Congruent
+               </i>
+               Especialización
+              </a>
+             </li>
+             <li>
+              <a href="/maestrias/universidad-cooperativa-de-colombia---medellin/listado/productos/2/305.html">
+               <i class="redvineta">
+                » &amp;Congruent
+               </i>
+               Maestría
+              </a>
+             </li>
+             <li>
+              <a href="/carreras-tecnicas/universidad-cooperativa-de-colombia---medellin/listado/productos/5/305.html">
+               <i class="redvineta">
+                » &amp;Congruent
+               </i>
+               Técnica
+              </a>
+             </li>
+            </ul>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="ColBox" id="ira000campus">
+         <div class="panel panel-default">
+          <div class="panel-heading AsideTitle">
+           <h3>
+            Campus
+            <br/>
+            (Universidad Cooperativa de Colombia - Medellín)
+           </h3>
+           <div class="BoxTitleSeparate marginUpDw5">
+            <div class="TipSeparate">
+            </div>
+           </div>
+          </div>
+          <div class="panel-body">
+           <div class="AsideList">
+            <ul>
+             <li>
+              <a href="/universidades/universidad-cooperativa-de-colombia---medellin-305/campus/campus-2561.html" title="Más información">
+               <i class="redvineta">
+                »
+               </i>
+               Campus
+              </a>
+             </li>
+            </ul>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="ColBox" id="ira000ventajas">
+         <div class="panel panel-default">
+          <div class="panel-heading AsideTitle backColorVentajas">
+           <h3>
+            Ventajas
+            <br/>
+            (Universidad Cooperativa de Colombia - Medellín)
+           </h3>
+           <div class="BoxTitleSeparate marginUpDw5">
+            <div class="TipSeparate">
+            </div>
+           </div>
+          </div>
+          <div class="panel-body">
+           <div class="AsideList">
+            <ul>
+             <li>
+              <a href="/universidades/universidad-cooperativa-de-colombia---medellin-305/ventajas/orientacion-y-acompanamiento-2766.html" title="Más información">
+               <i class="redvineta">
+                »
+               </i>
+               Orientación y acompañamiento
+              </a>
+             </li>
+             <li>
+              <a href="/universidades/universidad-cooperativa-de-colombia---medellin-305/ventajas/bienestar-universitario-2765.html" title="Más información">
+               <i class="redvineta">
+                »
+               </i>
+               Bienestar Universitario
+              </a>
+             </li>
+             <li>
+              <a href="/universidades/universidad-cooperativa-de-colombia---medellin-305/ventajas/biblioteca-2565.html" title="Más información">
+               <i class="redvineta">
+                »
+               </i>
+               Biblioteca
+              </a>
+             </li>
+            </ul>
+           </div>
+          </div>
+         </div>
+        </div>
+        <span class="clearing">
+        </span>
+        <div class="ColBox" id="ira004t">
+         TimeLine+
+         <div class="panel panel-default">
+          <div class="panel-heading AsideTitle">
+           <h3>
+            Timeline  twitter @ucooperativacol
+           </h3>
+          </div>
+          <div class="panel-body">
+           <a class="twitter-timeline" height="650" href="https://twitter.com/@ucooperativacol" width="100%">
+            Tweets by @ucooperativacol
+           </a>
+           <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
+           </script>
+          </div>
+         </div>
+        </div>
+        <span class="clearing">
+        </span>
+        <div class="ColBox" id="ira004t">
+         <iframe allow="encrypted-media" allowtransparency="true" class="iframeface" frameborder="0" height="500" scrolling="no" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUCooperativadeColombia&amp;tabs=timeline&amp;height=500&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId" style="border:none;overflow:hidden">
+         </iframe>
+        </div>
+       </aside>
+      </meta>
+     </div>
+    </div>
+   </div>
+  </section>
+  <span class="clearing">
+  </span>
+  <footer id="footer">
+   <section class="footerContainer">
+    <div class="container">
+     <div class="footerCenter">
+      <section class="LogoOrientaFt">
+      </section>
+      <section class="foot-column-a">
+       <h5>
+        Nosotros
+       </h5>
+       <ul class="foot-sponsor-data">
+        <li>
+         <a href="https://www.universia.net/co/home.html" target="_blank" title="Ver ¿Quiénes Somos?">
+          QUIÉNES SOMOS
+         </a>
+        </li>
+        <li>
+         <a aviso="" el="" href="/static/aviso_legal_co.html" legal"="" target="_blank" ver="">
+          AVISO LEGAL
+         </a>
+        </li>
+        <li>
+         <a confidencialidad"="" de="" href="/static/politica_de_privacidad_co.html" la="" política="" target="_blank" ver="">
+          POLÍTICA DE CONFIDENCIALIDAD
+         </a>
+        </li>
+        <li>
+         <a datos"="" de="" href="/static/manual-de-tratamiento-dedatos.html" manual="" target="_blank" tratamiento="" ver="">
+          MANUAL DE TRATAMIENTO DE DATOS
+         </a>
+        </li>
+        <li>
+         <a a="" contacto"="" href="/static/contacto.html" ir="" target="_blank">
+          CONTACTO
+         </a>
+        </li>
+       </ul>
+      </section>
+      <section class="foot-column-b">
+       <h5>
+        SECCIONES
+       </h5>
+       <ul class="foot-sponsor-data">
+        <li>
+         <a href="/universidades/listado/1.html" title="INSTITUCIONES PREGRADO">
+          INSTITUCIONES PREGRADO
+         </a>
+        </li>
+        <li>
+         <a href="/posgrados/listado/2.html" title="INSTITUCIONES POSGRADO">
+          INSTITUCIONES POSGRADO
+         </a>
+        </li>
+        <li>
+         <a href="/infolist/orientacion/consejos.html" title="CONSEJOS">
+          CONSEJOS
+         </a>
+        </li>
+        <li>
+         <a href="/infolist/orientacion/testimonios.html" title="TESTIMONIOS">
+          TESTIMONIOS
+         </a>
+        </li>
+        <li>
+         <a href="/test_orientacion_profesional/index.html" title="TEST DE ORIENTACIÓN VOCACIONAL">
+          TEST DE ORIENTACIÓN
+         </a>
+        </li>
+        <li>
+         <a href="/carreras/buscar_por_ciudad.html" title="TEST DE ORIENTACIÓN VOCACIONAL">
+          BUSCAR
+         </a>
+        </li>
+        <li class="RrSsIcn">
+         <a href="https://www.facebook.com/universia.colombia" target="_blank" title="Facebook">
+          <span class="facebookIcon">
+          </span>
+         </a>
+        </li>
+        <li class="RrSsIcn">
+         <a href="https://twitter.com/UniversiaCol" target="_blank" title="Twitter">
+          <span class="TwitterIcon">
+          </span>
+         </a>
+        </li>
+        <li class="RrSsIcn">
+         <a href="https://www.instagram.com/universia_colombia" target="_blank" title="Instagram">
+          <span class="InstagramIcon">
+          </span>
+         </a>
+        </li>
+       </ul>
+       <span class="clearing">
+       </span>
+      </section>
+      <section class="foot-column-c">
+       <div class="foot-mod-soponsor">
+        <h5>
+         VISITA TAMBIEN
+        </h5>
+        <ul class="foot-sponsor-data">
+         <li>
+          <a href="/cursos/index.html" target="_blank" title="CURSOS">
+           CURSOS
+          </a>
+         </li>
+         <li>
+          <a href="https://www.universia.net/co/estudios" target="_blank" title="PORTAL DE ESTUDIOS">
+           PORTAL DE ESTUDIOS
+          </a>
+         </li>
+         <li>
+          <a href="https://www.universia.net/co/universidades" target="_blank" title="UNIVERSIDADES EN COLOMBIA">
+           UNIVERSIDADES
+          </a>
+         </li>
+         <li>
+          <a href="https://jobs.universia.net/co" target="_blank" title="Portal de empleo">
+           PORTAL DE EMPLEO
+          </a>
+         </li>
+        </ul>
+        <span class="clearing">
+        </span>
+       </div>
+       <!--/foot-mod-soponsor-->
+       <div class="foot-mod-sponsor-linklist">
+        <ul class="foot-sponsor-links">
+         <li>
+          <a href="https://cienciagora.universia.net.co" target="_blank" title="GALERÍA DE CIENTÍFICOS E INVESTIGADORES">
+           GALERÍA DE CIENTÍFICOS E INVESTIGADORES
+          </a>
+         </li>
+         <li>
+          <a href="https://guiaempresas.universia.net.co/" target="_blank" title="GUÍA DE EMPRESAS">
+           GUÍA DE EMPRESAS
+          </a>
+         </li>
+         <li>
+          <a href="https://orientacion.universia.com.ec/" target="_blank" title="ORIENTACIÓN ECUADOR">
+           ORIENTACION ECUADOR
+          </a>
+         </li>
+         <li>
+          <a href="https://orientacion.universia.edu.pe/" target="_blank" title="ORIENTACIÓN PERÚ">
+           ORIENTACION PERÚ
+          </a>
+         </li>
+        </ul>
+        <span class="clearing">
+        </span>
+       </div>
+       <!--/foot-mod-linklist-->
+       <span class="clearing">
+       </span>
+      </section>
+     </div>
+    </div>
+   </section>
+   <div class="footerWrpRed">
+    <div id="footerLogo">
+     <span class="txtCopyRight">
+      © Universia 2020
+     </span>
+     <a href="https://www.universia.net/co/home.html">
+      <span class="LogoFooter">
+      </span>
+     </a>
+    </div>
+   </div>
+  </footer>
+  <script src="/resources_front/js/commons_footer_forallpages.js?ver=02" type="text/javascript">
+  </script>
+  <script src="/resources_front/ajs/cookies_agree/cookies-utils.js" type="text/javascript">
+  </script>
+  <script src="/resources_front/js/commons_checkcookie.js" type="text/javascript">
+  </script>
+  <div id="div_cookiesPolicy">
+   <div id="msgCookie">
+    <p>
+     <strong>
+      AVISO COOKIES+
+     </strong>
+    </p>
+    <p>
+     Universia utiliza cookies para mejorar la navegación en su web.
+     <br/>
+     Al continuar navegando en esta web, estás aceptando su utilización en los términos establecidos en la
+     <a href="/static/politica_de_cookies_co.html" target="_blank">
+      Política de cookies
+     </a>
+     .
+    </p>
+   </div>
+   <div class="cookiesPolicy_close">
+    <a href="#" id="ok_cookies">
+     Cerrar +
+    </a>
+   </div>
+  </div>
+  <script src="/resources_front/js/commons_okcookies.js" type="text/javascript">
+  </script>
+ </body>
+ <script language="javascript" src="/resources_front/js/commons_marcaslocal_footer.js?ver=02" type="text/javascript">
+ </script>
+</html>
