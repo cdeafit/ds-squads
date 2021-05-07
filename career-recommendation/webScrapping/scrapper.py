@@ -36,11 +36,14 @@ def get_table(soup):
     soup = BeautifulSoup(soup, 'html.parser')
     table = soup.find("table", {"class": "TablaSnies"})
     rows = table.findAll('tr')
-    name = soup.find("h1", {"class": "nopadding"})
+    titles = soup.findAll("h1", {"class": "nopadding"})
+    name = titles[0].text.strip(" \n ")
+    degree = titles[1].text.strip(" \n ")
     #[['\n', '\n             SNIES:\n            ', '\n'], ['\n            103166\n           ']]
     data = [[td.findChildren(text=True) for td in tr.findAll("td")] for tr in rows]
     data2={}
-    data2["Pregrado"] = name
+    data2["Universidad"] = name
+    data2["pregrado"] = degree
     for attr in data:
         try:
             column = attr[0][1].strip(" \n ")[:-1]
