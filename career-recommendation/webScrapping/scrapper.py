@@ -79,12 +79,10 @@ def get_table(soup):
     
     description = ""
     details = ""
-    table = ""
-    rows = ""
     titles =""
     name = ""
     degree = ""
-    data = ""
+    data = []
     try:
         details = soup.find("div", {"class": "DescrpBox"}).find("div", {"class": "SchlTxtNew"}).find('p').getText().strip(" \n ")
     except:
@@ -93,31 +91,25 @@ def get_table(soup):
         description = soup.find("div", {"class": "ColBoxMarg"}).find('p').getText().strip(" \n ")
     except:
         description = ""
+
     try:
         table = soup.find("table", {"class": "TablaSnies"})
-    except:
-        table = ""
-    
-    try:
         rows = table.findAll('tr')
-    except:
-        rows = ""
-    try:
-        titles = soup.findAll("h1", {"class": "nopadding"})
-    except:
-        titles = ""
-    try:
-        name = titles[0].text.strip(" \n ")
-    except:
-        name = ""
-    try:
-        degree = titles[1].text.strip(" \n ")
-    except:
-        degree = ""
-    try:
         data = [[td.findChildren(text=True) for td in tr.findAll("td")] for tr in rows]
     except:
+        table = ""
+        rows = ""
         data = []
+        
+    try:
+        titles = soup.findAll("h1", {"class": "nopadding"})
+        name = titles[0].text.strip(" \n ")
+        degree = titles[1].text.strip(" \n ")
+    except:
+        titles = ""
+        name = ""
+        degree = ""
+        
     #[['\n', '\n             SNIES:\n            ', '\n'], ['\n            103166\n           ']]
     data2={}
     data2["pregrado"] = degree
@@ -126,8 +118,8 @@ def get_table(soup):
     data2['Descripcion'] = description
     for attr in data:
         try:
-            column = attr[0][1].strip(" \n ")[:-1]
-            value =  attr[1][0].strip(" \n ")
+            column = attr[0][0]
+            value =  attr[1][0]
             data2[column] = value
         except:
             continue
