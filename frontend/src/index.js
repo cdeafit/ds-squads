@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import './App.css';
-import logo from './img/career.png';
-import mujerCareer from './img/mujer-career.png';
 import App from "./App"
 import {BrowserRouter as Router} from 'react-router-dom'
 
