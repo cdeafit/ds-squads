@@ -1,6 +1,6 @@
 import React from "react";
 import Results from "./pages/results/results";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route,Link} from "react-router-dom";
 import Home from "./pages/home/home";
 import logo from './img/career.png';
 
@@ -8,7 +8,9 @@ const App = () => {
   return (
     <div>
       <div className="main">
+      <Link to="/">
         <img src={logo} alt="" />
+        </Link>
         <p>
           Intro: dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
           nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.

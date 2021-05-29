@@ -1,0 +1,322 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400&display=swap");
+
+@font-face {
+  font-family: brandon-black;
+  src: url(./font/BrandonText-Black.ttf);
+}
+
+@font-face {
+  font-family: brandon-regular;
+  src: url(./font/BrandonText-Regular.ttf);
+}
+
+@font-face {
+  font-family: brandon-bold;
+  src: url(./font/BrandonText-Bold.ttf);
+}
+
+h1 {
+  text-align: center;
+  font-family: brandon-black;
+  color: #43414e;
+  font-size: 50px;
+}
+
+h2 {
+  font-family: brandon-black;
+  color: #480ca8;
+  text-align: center;
+  font-size: 35px;
+}
+
+h3 {
+  text-align: center;
+  font-family: brandon-black;
+  color: #78c0e0;
+}
+
+h4 {
+  text-align: center;
+  font-family: brandon-regular;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+p {
+  font-family: "Raleway", sans-serif;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.flex > div {
+  margin: 10px;
+  max-width: 500px;
+}
+
+img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+}
+
+.main {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(228, 220, 242, 1) 5.89%,
+    rgba(192, 172, 225, 1) 15.07%,
+    rgba(160, 129, 210, 1) 24.77%,
+    rgba(133, 93, 197, 1) 34.82%,
+    rgba(111, 63, 186, 1) 45.31%,
+    rgba(94, 41, 178, 1) 56.42%,
+    rgba(81, 24, 172, 1) 68.4%,
+    rgba(74, 15, 169, 1) 81.87%,
+    rgba(72, 12, 168, 1) 100%
+  );
+  box-sizing: border-box;
+  padding: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: -8px;
+}
+
+.main > p {
+  color: #48acf0;
+  width: 60%;
+  margin: auto;
+  font-weight: bold;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.upload {
+  background-color: white;
+  padding: 15px;
+  box-shadow: 0px 0px 9px #20202059;
+  margin-bottom: -50px;
+  margin: auto;
+  position: relative;
+  width: 95%;
+  border-radius: 5px;
+}
+
+.upload > .input > div:last-child > div {
+  background-color: #480ca8;
+  border-radius: 10px;
+  padding: 20px;
+  width: 180px;
+  border: 2px solid #480ca8;
+}
+
+.upload > .input > div:last-child > div:hover {
+  background-color: #5a1bcf;
+  border: 2px solid #06d6a0;
+}
+
+.upload > .input > div:last-child > div:last-child {
+  background-color: #ffffff;
+  box-shadow: none;
+  border: none;
+}
+
+.upload > .input > div:first-child > div {
+  background-image: url(img/carreras.png);
+  animation: bg-animation 3s ease-in-out 0s infinite normal;
+}
+
+@keyframes bg-animation {
+  0% {
+    background-position-y: 6px;
+    transform: translateY(-3px);
+  }
+  50% {
+    background-position-y: -6px;
+    transform: translateY(3px);
+  }
+  100% {
+    background-position-y: 6px;
+    transform: translateY(-3px);
+  }
+}
+
+input {
+  background-color: #310872;
+  color: white;
+  height: 40px;
+  text-align: center;
+  border-radius: 15px;
+  border: none;
+  padding: 5px;
+  margin: auto;
+  display: block;
+  width: 100px;
+  font-family: brandon-bold;
+}
+
+input:focus {
+  background-color: #e33b6a;
+  border: none;
+  outline: none;
+}
+
+.upload > .input > div:last-child > div:last-child > a {
+  text-decoration: none;
+}
+
+.upload > .input > div:last-child > div:last-child > a > button {
+  font-family: brandon-bold;
+  font-size: 18px;
+  border: none;
+  background-color: #e33b6a;
+  color: white;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  padding: 40px;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+
+.upload > .input > div:last-child > div:last-child > a > button:hover {
+  background-color: #310872;
+  transform: rotate(-10deg);
+}
+
+.upload > .input > div:last-child > div > p {
+  text-align: center;
+  color: #e33b6a;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+h1 {
+  color: #e33b6a;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-sizing: border-box;
+  align-items: flex-end;
+}
+
+.results > div{
+  margin-top: 50px;
+}
+
+.results > div > div {
+  overflow: hidden;
+  margin: 15px;
+  width: 400px;
+  height: 270px;
+  border-radius: 15px;
+}
+
+.results > div > div > img {
+  border-radius: 15px;
+}
+
+.results > div > div > div:last-child > h3 {
+  font-family: brandon-black;
+  color: rgba(255, 255, 255, 0.884);
+  mix-blend-mode: overlay;
+  font-size: 60px;
+  text-shadow: 0px 0px 7px rgb(0, 0, 0);
+}
+
+.results > div > div > div:last-child {
+  background-color: #09be8eb0;
+  height: 270px;
+  position: relative;
+  top: -306px;
+  border-radius: 15px;
+}
+
+.results > div > div:last-child {
+  background-color: #480ca8;
+  width: 300px;
+  margin: auto;
+  height: 150px;
+}
+
+.results > div > div:last-child > ul {
+  list-style: none;
+  font-family: brandon-regular;
+}
+
+.results > div > div:last-child > ul > li::before {
+  content: "👉 ";
+}
+
+.results > div > div:last-child > ul > li {
+  color: white;
+}
+
+.results > div > div:last-child > ul > li i {
+  color: #06d6a0;
+}
+
+.results > div > div:last-child > ul > li i::before {
+  content: " ";
+}
+
+.results > div > h2 {
+  max-width: 300px;
+  margin: auto;
+  line-height: 1em;
+  font-size: 27px;
+}
+
+.another{
+  background-color: #310872;
+  padding: 1em;
+  border-radius: 15px;
+  width:600px;
+}
+
+.another h2{
+  color:#E33B6A;
+}
+
+.another > div{
+  display:none;
+}
+
+.plus{
+  margin-top: 70px;
+}
+
+.plus select{
+  background-color: #E33B6A;
+  height: 50px;
+  color: white;
+  font-family: brandon-regular;
+  display:block;
+  margin: auto;
+  text-align:center;
+  width: 70%;
+  border-radius: 5px;
+  border:none;
+}
+
+.plus select option{
+  background-color: #480CA8;
+}
+
+
+.plus > div:last-child{
+  background-color: #e9ebee;
+  padding: 15px;
+  border-radius: 15px;
+}
