@@ -125,6 +125,11 @@ class Home extends React.Component { //clase principal
           </div>
         </>
     );
+
+
+  }
+  componentDidMount(){
+    document.title = "Career | Home";
   }
 }
 

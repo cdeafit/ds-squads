@@ -2,10 +2,17 @@ import React from "react";
 import sistemas from "../../img/sistemas.jpg";
 import derecho from "../../img/Derecho.jpg";
 import nutricion from "../../img/nutricion.jpg";
+import axios from "axios";
+// import { history } from "../../history";
+import {withRouter} from "react-router-dom"
+import {modelEndpoint} from "../../config"
+
 
 class Results extends React.Component {
   //clase principal
+  
   constructor(props) {
+    var careerDict = {};
     super(props);
     this.state = {
       c1: "Carrera1",
@@ -18,9 +25,11 @@ class Results extends React.Component {
       rca: 0,
     };
     this.displaySelected = this.displaySelected.bind(this);
+    document.title = "Career | Results";
   }
 
   render() {
+
     return (
       <>
         <h1>Las carreras que te recomendamos son:</h1>
@@ -176,87 +185,123 @@ class Results extends React.Component {
     );
   }
 
-  predict_career(language, math, humanity, science, english) {
-    var careers = [
-      "NEGOCIOS INTERNACIONALES",
-      "INGENIERIA INDUSTRIAL",
-      "PSICOLOGIA",
-      "COMUNICACION SOCIAL- PERIODISMO",
-      "COMUNICACION SOCIAL",
-      "ADMINISTRACION DE EMPRESAS",
-      "DERECHO",
-      "INGENIERIA AMBIENTAL",
-      "CONTADURIA PUBLICA",
-      "INGENIERIA MECANICA",
-      "INGENIERIA CIVIL",
-      "TRABAJO SOCIAL",
-      "NUTRICION Y DIETETICA",
-      "ECONOMIA",
-      "ODONTOLOGIA",
-      "ARQUITECTURA",
-      "LICENCIATURA EN EDUCACION PREESCOLAR",
-      "SOCIOLOGIA",
-      "FONOAUDIOLOGIA",
-      "ADMINISTRACION DE NEGOCIOS",
-      "INGENIERIA QUIMICA",
-      "LICENCIATURA EN PEDAGOGÍA INFANTIL",
-      "CONTADURÍA PÚBLICA",
-      "MEDICINA VETERINARIA",
-      "INGENIERIA DE SISTEMAS",
-      "INGENIERIA ELECTRONICA",
-      "INGENIERIA DE PETROLEOS",
-      "INGENIERIA BIOMEDICA",
-      "INGENIERIA AMBIENTAL Y SANITARIA",
-      "ENFERMERIA",
-      "MEDICINA VETERINARIA Y ZOOTECNIA",
-      "COMERCIO INTERNACIONAL",
-      "BIOLOGIA",
-      "INGENIERIA ELECTRICA",
-      "ADMINISTRACION DE NEGOCIOS INTERNACIONALES",
-      "INGENIERIA MECATRONICA",
-      "CIENCIA POLITICA",
-      "ADMINISTRACIÓN DE EMPRESAS",
-      "COMUNICACION SOCIAL Y PERIODISMO",
-      "MEDICINA",
-      "RELACIONES INTERNACIONALES",
-      "LICENCIATURA EN PEDAGOGIA INFANTIL",
-      "ADMINISTRACIÓN EN SALUD OCUPACIONAL",
-      "CIENCIAS MILITARES",
-      "MERCADEO",
-      "INSTRUMENTACION QUIRURGICA",
-      "DISEÑO INDUSTRIAL",
-      "LICENCIATURA EN CIENCIAS SOCIALES",
-      "FISIOTERAPIA",
-      "DISEÑO GRAFICO",
-      "PSICOLOGÍA",
-      "PUBLICIDAD",
-      "SALUD OCUPACIONAL",
-      "INGENIERIA AGRONOMICA",
-    ];
-    var careers_prob = {};
-    careers.forEach((element) => {
-      careers_prob[element] = Math.random();
-    });
-    /*
-    for (var key in careers_prob) {
-      var value = careers_prob[key];
-      console.log(Math.round(value * 100, 0) + " " + key);
-    }
-    */
-
-    return careers_prob;
-  }
-
-  fillSelecter(dict) {
-    var sel = document.getElementById("aditionalCareer");
-    for (var key in dict) {
-      var value = dict[key];
-      var opt = document.createElement("option");
-      opt.appendChild(document.createTextNode(key));
-      opt.value = value;
-      sel.appendChild(opt);
+  async predict_career(language, math, humanity, science, english) {
+    try {
+      const body = {
+          language,
+          math,
+          humanity,
+          science,
+          english
+      }
+      const res = await axios.get(modelEndpoint, body)
+      return res.data
+    } catch {
+      this.props.history.push("/404")
     }
   }
+
+
+  // predict_career(language, math, humanity, science, english) {
+  //   var careers = [
+  //     "NEGOCIOS INTERNACIONALES",
+  //     "INGENIERIA INDUSTRIAL",
+  //     "PSICOLOGIA",
+  //     "COMUNICACION SOCIAL- PERIODISMO",
+  //     "COMUNICACION SOCIAL",
+  //     "ADMINISTRACION DE EMPRESAS",
+  //     "DERECHO",
+  //     "INGENIERIA AMBIENTAL",
+  //     "CONTADURIA PUBLICA",
+  //     "INGENIERIA MECANICA",
+  //     "INGENIERIA CIVIL",
+  //     "TRABAJO SOCIAL",
+  //     "NUTRICION Y DIETETICA",
+  //     "ECONOMIA",
+  //     "ODONTOLOGIA",
+  //     "ARQUITECTURA",
+  //     "LICENCIATURA EN EDUCACION PREESCOLAR",
+  //     "SOCIOLOGIA",
+  //     "FONOAUDIOLOGIA",
+  //     "ADMINISTRACION DE NEGOCIOS",
+  //     "INGENIERIA QUIMICA",
+  //     "LICENCIATURA EN PEDAGOGÍA INFANTIL",
+  //     "CONTADURÍA PÚBLICA",
+  //     "MEDICINA VETERINARIA",
+  //     "INGENIERIA DE SISTEMAS",
+  //     "INGENIERIA ELECTRONICA",
+  //     "INGENIERIA DE PETROLEOS",
+  //     "INGENIERIA BIOMEDICA",
+  //     "INGENIERIA AMBIENTAL Y SANITARIA",
+  //     "ENFERMERIA",
+  //     "MEDICINA VETERINARIA Y ZOOTECNIA",
+  //     "COMERCIO INTERNACIONAL",
+  //     "BIOLOGIA",
+  //     "INGENIERIA ELECTRICA",
+  //     "ADMINISTRACION DE NEGOCIOS INTERNACIONALES",
+  //     "INGENIERIA MECATRONICA",
+  //     "CIENCIA POLITICA",
+  //     "ADMINISTRACIÓN DE EMPRESAS",
+  //     "COMUNICACION SOCIAL Y PERIODISMO",
+  //     "MEDICINA",
+  //     "RELACIONES INTERNACIONALES",
+  //     "LICENCIATURA EN PEDAGOGIA INFANTIL",
+  //     "ADMINISTRACIÓN EN SALUD OCUPACIONAL",
+  //     "CIENCIAS MILITARES",
+  //     "MERCADEO",
+  //     "INSTRUMENTACION QUIRURGICA",
+  //     "DISEÑO INDUSTRIAL",
+  //     "LICENCIATURA EN CIENCIAS SOCIALES",
+  //     "FISIOTERAPIA",
+  //     "DISEÑO GRAFICO",
+  //     "PSICOLOGÍA",
+  //     "PUBLICIDAD",
+  //     "SALUD OCUPACIONAL",
+  //     "INGENIERIA AGRONOMICA",
+  //   ];
+    
+  //   var careers_prob = {};
+  //   careers.forEach((element) => {
+  //     careers_prob[element] = Math.random();
+  //   });
+  //   var i = 1;
+  //   var sel = document.getElementById("aditionalCareer");
+  //   for (var key in careers_prob) {
+  //     var value = careers_prob[key];
+  //     var opt = document.createElement("option");
+  //     opt.appendChild(document.createTextNode(key));
+  //     opt.value = value;
+  //     sel.appendChild(opt);
+  //     //console.log(i+" "+Math.round(value * 100, 0) + " " + key);i++;
+  //   }
+  //   return careers_prob;
+  // }
+
+
+  top3Careers(dictAux) {
+    var dict = dictAux;
+    var bestsValue = [];
+    var bestsKeys = [];
+    var i = 0;
+    do {
+      var aux = 0;
+      var auxKey = "";
+      Object.entries(dict).forEach(([key,value]) => {
+        if (value > aux) {
+          aux = value;
+          auxKey = key;
+      }
+    })
+      delete dict[auxKey];
+      bestsKeys.push(auxKey);
+      bestsValue.push(Math.trunc(aux * 100));
+      i++;
+    }while(i < 3);
+    this.setState({ 
+      c1: bestsKeys[0],c2: bestsKeys[1],c3: bestsKeys[2],
+      rc1: bestsValue[0],rc2: bestsValue[1],rc3: bestsValue[2]});
+  }
+
 
   displaySelected() {
     var e = document.getElementById("aditionalCareer");
@@ -269,41 +314,12 @@ class Results extends React.Component {
     }else{
     document.getElementById("career4").style.display = 'block';
     }
-
-
-  }
-
-  top3Careers(dict) {
-    var bestsValue = [];
-    var bestsKeys = [];
-    var i = 0;
-    do {
-      var aux = dict["NEGOCIOS INTERNACIONALES"];
-      var auxKey = "";
-      for (var key in dict) {
-        var value = dict[key];
-        if (value > aux && bestsKeys.findIndex((a) => a === key) === -1) {
-          aux = value;
-          auxKey = key;
-        }
-      }
-      bestsKeys.push(auxKey);
-      bestsValue.push(Math.trunc(aux * 100));
-      i++;
-    } while (i < 3);
-    this.setState({ c1: bestsKeys[0] });
-    this.setState({ c2: bestsKeys[1] });
-    this.setState({ c3: bestsKeys[2] });
-    this.setState({ rc1: bestsValue[0] });
-    this.setState({ rc2: bestsValue[1] });
-    this.setState({ rc3: bestsValue[2] });
   }
 
   componentDidMount() {
-    var dict = this.predict_career(10, 20, 30, 40, 50);
+    var dict = this.predict_career(10, 10, 10, 10, 10);
     this.top3Careers(dict);
-    this.fillSelecter(dict);
   }
 }
 
-export default Results;
+export default withRouter(Results);

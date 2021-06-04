@@ -15,6 +15,15 @@
   src: url(./font/BrandonText-Bold.ttf);
 }
 
+#logo {
+  transform: scale(1);
+  transition: 0.2s ease-in;
+}
+
+#logo:hover {
+  transform: scale(0.99) ;
+}
+
 h1 {
   text-align: center;
   font-family: brandon-black;
