@@ -4,15 +4,14 @@ import derecho from "../../img/Derecho.jpg";
 import nutricion from "../../img/nutricion.jpg";
 import axios from "axios";
 // import { history } from "../../history";
-import {withRouter} from "react-router-dom"
-import {modelEndpoint} from "../../config"
-
+import { withRouter } from "react-router-dom"
+import { modelEndpoint } from "../../config"
+import { majorsInfo } from "../../jsonParser"
 
 class Results extends React.Component {
   //clase principal
   
   constructor(props) {
-    var careerDict = {};
     super(props);
     this.state = {
       c1: "Carrera1",
@@ -23,6 +22,7 @@ class Results extends React.Component {
       rc3: 0,
       ca: "Carrera aux",
       rca: 0,
+      careers: majorsInfo
     };
     this.displaySelected = this.displaySelected.bind(this);
     document.title = "Career | Results";
@@ -33,8 +33,49 @@ class Results extends React.Component {
     return (
       <>
         <h1>Las carreras que te recomendamos son:</h1>
+        
         <div className="results">
-          <div id="career1">
+          {
+            this.state.careers.map ((career, index) => (
+
+            <div>
+            <h2>{career.pregrado}</h2>
+            <div>
+              <img src={career.image} alt="" />
+              <div
+                id="bar1"
+                style={{ top: -306 + ((100 - this.state.rc1) * 306) / 100 }}
+              >
+                <h3 style={{ fontSize: 60 * ((this.state.rc1 + 10) / 100) }}>
+                  {this.state.rc1}%
+                </h3>
+              </div>
+            </div>
+            <div >
+            <form>
+          <h3>¿En dónde te gustaría estudiar?</h3>
+          <select
+            name="Seleccione una carrera"
+            id={`aditionalCareer${index+1}`}
+            onChange={() => this.displaySelected(index+1)}
+          >
+            <option name='default'>Selecciona una universidad...</option>
+          </select>
+        </form>
+              <ul id={`career${index+1}`} style={{display: "none"}}>
+                <li>{career.Universidad}</li>
+                <li>{career.detalles}</li>
+                <li>{career.Descripcion}</li>
+                <li>{career["Tipo de formación"]}</li>
+                <li>{career.Modalidad}</li>
+                <li>{career["Duración"]}</li>
+                <li>{career.Ciudad}</li>
+              </ul>
+            </div>
+          </div>
+            ))
+          }
+            {/* <div id="career1">
             <h2>{this.state.c1}</h2>
             <div>
               <img src={sistemas} alt="" />
@@ -48,31 +89,11 @@ class Results extends React.Component {
               </div>
             </div>
             <div>
-              <ul>
-                <li>
-                  <b>Universidad #1</b>
-                  <i>Campus</i>
-                </li>
-                <li>
-                  <p>
-                    <b></b>
-                  </p>
-                  <p>
-                    <i></i>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <b></b>
-                  </p>
-                  <p>
-                    <i></i>
-                  </p>
-                </li>
-              </ul>
+              Universidad
             </div>
-          </div>
-          <div id="career2">
+          </div> */}
+          
+          {/* <div id="career2">
             <h2>{this.state.c2}</h2>
             <div>
               <img src={derecho} alt="" />
@@ -85,22 +106,10 @@ class Results extends React.Component {
               </div>
             </div>
             <div>
-              <ul>
-                <li>
-                    <b></b>
-                    <i></i>
-                </li>
-                <li>
-                    <b></b>
-                    <i></i>
-                </li>
-                <li>
-                    <b></b>
-                    <i></i>
-                </li>
-              </ul>
+            Universidad
             </div>
-          </div>
+          </div> */}
+          {/*
           <div id="career3">
             <h2>{this.state.c3}</h2>
             <div>
@@ -115,22 +124,10 @@ class Results extends React.Component {
               </div>
             </div>
             <div>
-              <ul>
-                <li>
-                    <b id="college3-1"></b>
-                    <i id="campus3-1"></i>
-                </li>
-                <li>
-                    <b id="college3-2"></b>
-                    <i id="campus3-2"></i>
-                </li>
-                <li>
-                    <b id="college3-3"></b>
-                    <i id="campus3-3"></i>
-                </li>
-              </ul>
+            Universidad
             </div>
           </div>
+          */}
           <div></div>
         </div>
         <div className="flex plus">
@@ -185,113 +182,113 @@ class Results extends React.Component {
     );
   }
 
-  async predict_career(language, math, humanity, science, english) {
-    try {
-      const body = {
-          language,
-          math,
-          humanity,
-          science,
-          english
-      }
-      const res = await axios.get(modelEndpoint, body)
-      return res.data
-    } catch {
-      this.props.history.push("/404")
-    }
-  }
-
-
-  // predict_career(language, math, humanity, science, english) {
-  //   var careers = [
-  //     "NEGOCIOS INTERNACIONALES",
-  //     "INGENIERIA INDUSTRIAL",
-  //     "PSICOLOGIA",
-  //     "COMUNICACION SOCIAL- PERIODISMO",
-  //     "COMUNICACION SOCIAL",
-  //     "ADMINISTRACION DE EMPRESAS",
-  //     "DERECHO",
-  //     "INGENIERIA AMBIENTAL",
-  //     "CONTADURIA PUBLICA",
-  //     "INGENIERIA MECANICA",
-  //     "INGENIERIA CIVIL",
-  //     "TRABAJO SOCIAL",
-  //     "NUTRICION Y DIETETICA",
-  //     "ECONOMIA",
-  //     "ODONTOLOGIA",
-  //     "ARQUITECTURA",
-  //     "LICENCIATURA EN EDUCACION PREESCOLAR",
-  //     "SOCIOLOGIA",
-  //     "FONOAUDIOLOGIA",
-  //     "ADMINISTRACION DE NEGOCIOS",
-  //     "INGENIERIA QUIMICA",
-  //     "LICENCIATURA EN PEDAGOGÍA INFANTIL",
-  //     "CONTADURÍA PÚBLICA",
-  //     "MEDICINA VETERINARIA",
-  //     "INGENIERIA DE SISTEMAS",
-  //     "INGENIERIA ELECTRONICA",
-  //     "INGENIERIA DE PETROLEOS",
-  //     "INGENIERIA BIOMEDICA",
-  //     "INGENIERIA AMBIENTAL Y SANITARIA",
-  //     "ENFERMERIA",
-  //     "MEDICINA VETERINARIA Y ZOOTECNIA",
-  //     "COMERCIO INTERNACIONAL",
-  //     "BIOLOGIA",
-  //     "INGENIERIA ELECTRICA",
-  //     "ADMINISTRACION DE NEGOCIOS INTERNACIONALES",
-  //     "INGENIERIA MECATRONICA",
-  //     "CIENCIA POLITICA",
-  //     "ADMINISTRACIÓN DE EMPRESAS",
-  //     "COMUNICACION SOCIAL Y PERIODISMO",
-  //     "MEDICINA",
-  //     "RELACIONES INTERNACIONALES",
-  //     "LICENCIATURA EN PEDAGOGIA INFANTIL",
-  //     "ADMINISTRACIÓN EN SALUD OCUPACIONAL",
-  //     "CIENCIAS MILITARES",
-  //     "MERCADEO",
-  //     "INSTRUMENTACION QUIRURGICA",
-  //     "DISEÑO INDUSTRIAL",
-  //     "LICENCIATURA EN CIENCIAS SOCIALES",
-  //     "FISIOTERAPIA",
-  //     "DISEÑO GRAFICO",
-  //     "PSICOLOGÍA",
-  //     "PUBLICIDAD",
-  //     "SALUD OCUPACIONAL",
-  //     "INGENIERIA AGRONOMICA",
-  //   ];
+  
+ 
+  predict_career(language, math, humanity, science, english) {
+    var careers = [
+      "NEGOCIOS INTERNACIONALES",
+     "INGENIERIA INDUSTRIAL",
+     "PSICOLOGIA",
+     "COMUNICACION SOCIAL- PERIODISMO",
+     "COMUNICACION SOCIAL",
+     "ADMINISTRACION DE EMPRESAS",
+     "DERECHO",
+     "INGENIERIA AMBIENTAL",
+     "CONTADURIA PUBLICA",
+     "INGENIERIA MECANICA",
+     "INGENIERIA CIVIL",
+     "TRABAJO SOCIAL",
+     "NUTRICION Y DIETETICA",
+     "ECONOMIA",
+     "ODONTOLOGIA",
+     "ARQUITECTURA",
+     "LICENCIATURA EN EDUCACION PREESCOLAR",
+     "SOCIOLOGIA",
+     "FONOAUDIOLOGIA",
+     "ADMINISTRACION DE NEGOCIOS",
+     "INGENIERIA QUIMICA",
+     "LICENCIATURA EN PEDAGOGÍA INFANTIL",
+     "CONTADURÍA PÚBLICA",
+     "MEDICINA VETERINARIA",
+     "INGENIERIA DE SISTEMAS",
+     "INGENIERIA ELECTRONICA",
+     "INGENIERIA DE PETROLEOS",
+     "INGENIERIA BIOMEDICA",
+     "INGENIERIA AMBIENTAL Y SANITARIA",
+     "ENFERMERIA",
+     "MEDICINA VETERINARIA Y ZOOTECNIA",
+     "COMERCIO INTERNACIONAL",
+     "BIOLOGIA",
+     "INGENIERIA ELECTRICA",
+     "ADMINISTRACION DE NEGOCIOS INTERNACIONALES",
+     "INGENIERIA MECATRONICA",
+     "CIENCIA POLITICA",
+     "ADMINISTRACIÓN DE EMPRESAS",
+     "COMUNICACION SOCIAL Y PERIODISMO",
+     "MEDICINA",
+     "RELACIONES INTERNACIONALES",
+     "LICENCIATURA EN PEDAGOGIA INFANTIL",
+     "ADMINISTRACIÓN EN SALUD OCUPACIONAL",
+     "CIENCIAS MILITARES",
+     "MERCADEO",
+     "INSTRUMENTACION QUIRURGICA",
+     "DISEÑO INDUSTRIAL",
+     "LICENCIATURA EN CIENCIAS SOCIALES",
+     "FISIOTERAPIA",
+     "DISEÑO GRAFICO",
+     "PSICOLOGÍA",
+     "PUBLICIDAD",
+     "SALUD OCUPACIONAL",
+     "INGENIERIA AGRONOMICA",
+    ];
     
-  //   var careers_prob = {};
-  //   careers.forEach((element) => {
-  //     careers_prob[element] = Math.random();
-  //   });
-  //   var i = 1;
-  //   var sel = document.getElementById("aditionalCareer");
-  //   for (var key in careers_prob) {
-  //     var value = careers_prob[key];
-  //     var opt = document.createElement("option");
-  //     opt.appendChild(document.createTextNode(key));
-  //     opt.value = value;
-  //     sel.appendChild(opt);
-  //     //console.log(i+" "+Math.round(value * 100, 0) + " " + key);i++;
-  //   }
-  //   return careers_prob;
-  // }
-
-
+    careers.sort();
+    var careers_prob = {};
+    careers.forEach((element) => {
+      careers_prob[element] = Math.random();
+    });
+    var i = 1;
+   var sel = document.getElementById("aditionalCareer1");
+   for (var key in careers_prob) {
+     var value = careers_prob[key];
+     var opt = document.createElement("option");
+     opt.appendChild(document.createTextNode(key));
+     opt.value = value;
+     sel.appendChild(opt);
+     //console.log(i+" "+Math.round(value * 100, 0) + " " + key);i++;
+   }
+   return careers_prob;
+ }
+ 
+ /*
+ async predict_career(language, math, humanity, science, english) {
+   try {
+     const body = {
+         language,
+         math,
+         humanity,
+         science,
+         english
+     }
+     const res = await axios.get(modelEndpoint, body)
+     return res.data
+   } catch {
+     this.props.history.push("/404")
+   }
+ }
+ */
+ 
   top3Careers(dictAux) {
-    var dict = dictAux;
+    var dict = {...dictAux};
     var bestsValue = [];
     var bestsKeys = [];
     var i = 0;
+    var aux = 0;
+    var auxKey = "";
     do {
-      var aux = 0;
-      var auxKey = "";
-      Object.entries(dict).forEach(([key,value]) => {
-        if (value > aux) {
-          aux = value;
-          auxKey = key;
-      }
-    })
+      var auxValues = this.greaterKey(dict);
+      auxKey = auxValues[0];
+      aux = auxValues[1];
       delete dict[auxKey];
       bestsKeys.push(auxKey);
       bestsValue.push(Math.trunc(aux * 100));
@@ -300,25 +297,37 @@ class Results extends React.Component {
     this.setState({ 
       c1: bestsKeys[0],c2: bestsKeys[1],c3: bestsKeys[2],
       rc1: bestsValue[0],rc2: bestsValue[1],rc3: bestsValue[2]});
-  }
-
-
-  displaySelected() {
-    var e = document.getElementById("aditionalCareer");
+    }
+    
+    greaterKey(dict){
+      var aux = 0;
+      var auxKey ="";
+      Object.entries(dict).forEach(([key,value]) => {
+        if (value > aux) {
+          aux = value;
+          auxKey = key;
+        }
+      });
+      return [auxKey,aux];
+    }
+    
+    displaySelected(index) {
+    var e = document.getElementById(`aditionalCareer${index}`);
     var c = e.options[e.selectedIndex].text;
     var rc = e.options[e.selectedIndex].value;
     this.setState({ ca: c });
     this.setState({ rca: Math.trunc(rc * 100)});
-    if(c === 'Seleccione una carrera...'){
-        document.getElementById("career4").style.display = 'none';
+    if(c === 'Selecciona una universidad...'){
+        document.getElementById(`career${index}`).style.display = 'none';
     }else{
-    document.getElementById("career4").style.display = 'block';
+    document.getElementById(`career${index}`).style.display = 'block';
     }
   }
 
-  componentDidMount() {
-    var dict = this.predict_career(10, 10, 10, 10, 10);
-    this.top3Careers(dict);
+  async componentDidMount() {
+    
+     var dict = await this.predict_career(10, 10, 10, 10, 10);
+     this.top3Careers(dict);
   }
 }
 
