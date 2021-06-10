@@ -1,0 +1,1 @@
+export const majorsInfo = require("./majors.json")

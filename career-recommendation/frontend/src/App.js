@@ -14,10 +14,7 @@ const App = () => {
         <img src={logo} alt="" id="logo" />
         </Link>
         <p>
-          Intro: dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-          nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-          Ut wisi ad minim veniam, quis nostrud exerci ullamcorper suscipit
-          lobortis nisl ut aliquip ex ea consequat.
+          Sabemos que no es fácil elegir el pregrado ideal, es por eso que es por esto que hemos desarrollado esta App. ¡Escribe los resultados de tus ICFES y descubramos juntos la carrera de tus sueños!
         </p>
 
         <div className="upload">
