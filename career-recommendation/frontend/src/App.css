@@ -21,7 +21,7 @@
 }
 
 #logo:hover {
-  transform: scale(0.99) ;
+  transform: scale(0.99);
 }
 
 h1 {
@@ -174,11 +174,11 @@ input:focus {
   outline: none;
 }
 
-.upload > .input > div:last-child > div:last-child > a {
+.upload > .input > div:last-child > div:last-child  {
   text-decoration: none;
 }
 
-.upload > .input > div:last-child > div:last-child > a > button {
+.upload > .input > div:last-child > div:last-child > button {
   font-family: brandon-bold;
   font-size: 18px;
   border: none;
@@ -192,7 +192,7 @@ input:focus {
   transition: 0.2s;
 }
 
-.upload > .input > div:last-child > div:last-child > a > button:hover {
+.upload > .input > div:last-child > div:last-child  > button:hover {
   background-color: #310872;
   transform: rotate(-10deg);
 }
@@ -220,7 +220,7 @@ h1 {
   align-items: flex-start;
 }
 
-.results > div{
+.results > div {
   margin-top: 50px;
 }
 
@@ -257,8 +257,9 @@ h1 {
   width: 380px;
   margin: auto;
   padding: 7px;
-  padding-bottom:15px;
+  padding-bottom: 15px;
   height: auto;
+  min-height: 150px;
 }
 
 .results > div > div:last-child > ul {
@@ -266,7 +267,7 @@ h1 {
   font-family: brandon-regular;
 }
 
-.results > div > div:last-child > ul > li{
+.results > div > div:last-child > ul > li {
   margin-left: -25px;
 }
 
@@ -287,74 +288,91 @@ h1 {
 }
 
 .results > div > h2 {
-  max-width: 300px;
+  max-width: 400px;
   margin: auto;
   line-height: 1em;
   font-size: 27px;
 }
 
-.another{
+.another {
   background-color: #310872;
   padding: 1em;
   border-radius: 15px;
-  width:600px;
+  width: 600px;
 }
 
-.another h2{
-  color:#E33B6A;
+.another h2 {
+  color: #e33b6a;
 }
 
-.another > div{
-  display:none;
+.another > div {
+  display: none;
 }
 
-.plus{
+.plus {
   margin-top: 70px;
 }
 
-.plus select{
-  background-color: #E33B6A;
+.plus select {
+  background-color: #e33b6a;
   height: 50px;
   color: white;
   font-family: brandon-regular;
-  display:block;
+  display: block;
   margin: auto;
-  text-align:center;
+  text-align: center;
   width: 70%;
   border-radius: 5px;
-  border:none;
+  border: none;
 }
 
-.plus select option{
-  background-color: #480CA8;
+.plus select option {
+  background-color: #480ca8;
 }
 
-
-.plus > div:last-child{
+.plus > div:last-child {
   background-color: #e9ebee;
   padding: 15px;
   border-radius: 15px;
 }
 
-
-.results select{
-  background-color: #E33B6A;
+.results select {
+  background-color: #e33b6a;
   height: 50px;
   color: white;
   font-family: brandon-regular;
-  display:block;
+  display: block;
   margin: auto;
-  text-align:center;
+  text-align: center;
   width: 70%;
   border-radius: 5px;
-  border:none;
+  border: none;
+  text-transform: uppercase;
 }
 
-.results select option{
+.results select option {
   background-color: #07ca96;
   font-size: 12px;
-  color:#ffffff;
+  color: #ffffff;
   font-family: brandon-regular;
 }
 
+#cf {
+  position:relative;
+  height:150px;
+  width:450px;
+  margin:0 auto;
+}
 
+#cf img {
+  position:absolute;
+  left:0;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#cf img.top:hover {
+  opacity:0;
+}

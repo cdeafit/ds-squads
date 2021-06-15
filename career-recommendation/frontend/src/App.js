@@ -3,7 +3,9 @@ import Results from "./pages/results/results";
 import { Switch, Route, Link, Redirect} from "react-router-dom";
 import Home from "./pages/home/home";
 import logo from './img/career.png';
+import logoPride from './img/pride.png';
 import NotFound from './pages/notFound/notFound';
+
 
 
 const App = () => {
@@ -11,10 +13,13 @@ const App = () => {
     <div>
       <div className="main">
       <Link to="/">
-        <img src={logo} alt="" id="logo" />
+        <div id='cf'>
+          <img src={logo} alt="" id="logo" draggable="false" />
+        <img src={logoPride} alt="" class="top" draggable="false" />
+        </div>
         </Link>
         <p>
-          Sabemos que no es fácil elegir el pregrado ideal, es por eso que es por esto que hemos desarrollado esta App. ¡Escribe los resultados de tus ICFES y descubramos juntos la carrera de tus sueños!
+          Sabemos que no es fácil elegir el pregrado ideal, es por eso que hemos desarrollado esta App. ¡Escribe los resultados de tus ICFES y descubramos juntos la carrera de tus sueños!
         </p>
 
         <div className="upload">
