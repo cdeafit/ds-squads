@@ -225,14 +225,14 @@ class Results extends React.Component {
     this.cleanAuxDropDownList();
     var e = document.getElementById("auxCareer");
     var c = e.options[e.selectedIndex].text;
-    var rc =e.options[e.selectedIndex].value;
+    var rc = e.options[e.selectedIndex].value;
     /*Object.entries(this.state.careersAffinities).forEach(([key, value]) => {
       if (key === c) {
         return (a = value);
       }
       
     });*/
-    console.log(c+" "+rc);
+    console.log(c + " " + rc);
     if (c === "Seleccione una carrera...") {
       document.getElementById(`auxDiv`).style.display = "none";
     } else {
@@ -295,87 +295,86 @@ class Results extends React.Component {
   };
 
   setCareersScores(scores) {
-    try{
-    var careers = [
-      "ADMINISTRACION DE EMPRESAS",
-      "ADMINISTRACION DE NEGOCIOS",
-      "ADMINISTRACION DE NEGOCIOS INTERNACIONALES",
-      "ADMINISTRACION DE EMPRESAS",
-      "ADMINISTRACION EN SALUD OCUPACIONAL",
-      "ARQUITECTURA",
-      "BIOLOGIA",
-      "CIENCIA POLITICA",
-      "CIENCIAS MILITARES",
-      "COMERCIO INTERNACIONAL",
-      "COMUNICACION SOCIAL",
-      "COMUNICACION SOCIAL Y PERIODISMO",
-      "COMUNICACION SOCIAL-PERIODISMO",
-      "CONTADURIA PUBLICA",
-      "CONTADURIA PÚBLICA",
-      "DERECHO",
-      "DISEÑO GRAFICO",
-      "DISEÑO INDUSTRIAL",
-      "ECONOMIA",
-      "ENFERMERIA",
-      "FISIOTERAPIA",
-      "FONOAUDIOLOGIA",
-      "INGENIERIA AGRONOMICA",
-      "INGENIERIA AMBIENTAL",
-      "INGENIERIA AMBIENTAL Y SANITARIA",
-      "INGENIERIA BIOMEDICA",
-      "INGENIERIA CIVIL",
-      "INGENIERIA DE PETROLEOS",
-      "INGENIERIA DE SISTEMAS",
-      "INGENIERIA ELECTRICA",
-      "INGENIERIA ELECTRONICA",
-      "INGENIERIA INDUSTRIAL",
-      "INGENIERIA MECANICA",
-      "INGENIERIA MECATRONICA",
-      "INGENIERIA QUIMICA",
-      "INSTRUMENTACION QUIRURGICA",
-      "LICENCIATURA EN CIENCIAS SOCIALES",
-      "LICENCIATURA EN EDUCACION PREESCOLAR",
-      "LICENCIATURA EN PEDAGOGIA INFANTIL",
-      "LICENCIATURA EN PEDAGOGÍA INFANTIL",
-      "MEDICINA",
-      "MEDICINA VETERINARIA",
-      "MEDICINA VETERINARIA Y ZOOTECNIA",
-      "MERCADEO",
-      "NEGOCIOS INTERNACIONALES",
-      "NUTRICION Y DIETETICA",
-      "ODONTOLOGIA",
-      "PSICOLOGIA",
-      "PSICOLOGIA",
-      "PUBLICIDAD",
-      "RELACIONES INTERNACIONALES",
-      "SALUD OCUPACIONAL",
-      "SOCIOLOGIA",
-      "TRABAJO SOCIAL",
-    ];
-    var careers_prob = {};
-    let i = 0;
-    careers.forEach((element) => {
-      careers_prob[element.toLowerCase()] = scores[i];
-      i++;
-    });
-    //Selectores
-    var sel = document.getElementById("auxCareer");
-    for (const [key, value] of Object.entries(careers_prob)) {
-      var opt = document.createElement("option");
-      opt.appendChild(document.createTextNode(key));
-      opt.text = key;
-      opt.value = value;
-      sel.appendChild(opt);    
-      this.setState({ careersAffinities: careers_prob });
-    return careers_prob;
+    try {
+      var careers = [
+        "ADMINISTRACION DE EMPRESAS",
+        "ADMINISTRACION DE NEGOCIOS",
+        "ADMINISTRACION DE NEGOCIOS INTERNACIONALES",
+        "ADMINISTRACIÓN DE EMPRESAS",
+        "ADMINISTRACIÓN EN SALUD OCUPACIONAL",
+        "ARQUITECTURA",
+        "BIOLOGIA",
+        "CIENCIA POLITICA",
+        "CIENCIAS MILITARES",
+        "COMERCIO INTERNACIONAL",
+        "COMUNICACION SOCIAL",
+        "COMUNICACION SOCIAL Y PERIODISMO",
+        "COMUNICACION SOCIAL- PERIODISMO",
+        "CONTADURIA PUBLICA",
+        "CONTADURÍA PÚBLICA",
+        "DERECHO",
+        "DISEÑO GRAFICO",
+        "DISEÑO INDUSTRIAL",
+        "ECONOMIA",
+        "ENFERMERIA",
+        "FISIOTERAPIA",
+        "FONOAUDIOLOGIA",
+        "INGENIERIA AGRONOMICA",
+        "INGENIERIA AMBIENTAL",
+        "INGENIERIA AMBIENTAL Y SANITARIA",
+        "INGENIERIA BIOMEDICA",
+        "INGENIERIA CIVIL",
+        "INGENIERIA DE PETROLEOS",
+        "INGENIERIA DE SISTEMAS",
+        "INGENIERIA ELECTRICA",
+        "INGENIERIA ELECTRONICA",
+        "INGENIERIA INDUSTRIAL",
+        "INGENIERIA MECANICA",
+        "INGENIERIA MECATRONICA",
+        "INGENIERIA QUIMICA",
+        "INSTRUMENTACION QUIRURGICA",
+        "LICENCIATURA EN CIENCIAS SOCIALES",
+        "LICENCIATURA EN EDUCACION PREESCOLAR",
+        "LICENCIATURA EN PEDAGOGIA INFANTIL",
+        "LICENCIATURA EN PEDAGOGÍA INFANTIL",
+        "MEDICINA",
+        "MEDICINA VETERINARIA",
+        "MEDICINA VETERINARIA Y ZOOTECNIA",
+        "MERCADEO",
+        "NEGOCIOS INTERNACIONALES",
+        "NUTRICION Y DIETETICA",
+        "ODONTOLOGIA",
+        "PSICOLOGIA",
+        "PSICOLOGÍA",
+        "PUBLICIDAD",
+        "RELACIONES INTERNACIONALES",
+        "SALUD OCUPACIONAL",
+        "SOCIOLOGIA",
+        "TRABAJO SOCIAL",
+      ];
+      var careers_prob = {};
+      let i = 0;
+      careers.forEach((element) => {
+        careers_prob[element.toLowerCase()] = scores[i];
+        i++;
+      });
+      //Selectores
+      var sel = document.getElementById("auxCareer");
+      for (const [key, value] of Object.entries(careers_prob)) {
+        var opt = document.createElement("option");
+        opt.appendChild(document.createTextNode(key));
+        opt.text = key;
+        opt.value = value;
+        sel.appendChild(opt);
+        this.setState({ careersAffinities: careers_prob });
+        return careers_prob;
+      }
+    } catch {
+      this.errorHandleEvent();
     }
-  }catch{
-    this.errorHandleEvent();
   }
 
-}
-
-  errorHandleEvent(){
+  errorHandleEvent() {
     this.props.history.push("/404");
   }
 
