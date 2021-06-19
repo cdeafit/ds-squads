@@ -4,7 +4,7 @@ When it comes to choosing a career path, senior high-school students struggle to
 
 # How to use the App
 
-To know your recommended careers, you just need to introduce your ICFES scores (with values from 0 to 100) as the app ask for it. These scores are: language, math, humanities, science and english, then, press the submit button. The app will redirect you to the results page, in there would be three careers that the app recommended you, and for each career, you can check for the universities that offer it. Additional, if you are previously interested in a specific career, in the bottom of the results page would be a selector menu, where you can search for the career you want, see how much affinity you have with it, and the universities that offer it.
+To know your recommended careers, you just need to introduce your ICFES scores (with values from 0 to 100) as the app ask for it. These scores are: language, math, humanities, science and english, then, press the submit button. The app will redirect you to the results page, in there would be three careers that the app recommended you, and for each career, you can check for the universities that offer it. Additionally, if you are previously interested in a specific career, in the bottom of the results page would be a selector menu, where you can search for the career you want, see how much affinity you have with it, and the universities that offer it.
 
 # Tools
 ## Adobe illustrator: used for graphic design
