@@ -4,13 +4,13 @@ When it comes to choosing a career path, senior high-school students struggle to
 
 
 ## Running App
-
+```
 $ cd frontend
 $ npm install
 $ npm audit fix
 $ npm install sweetalert
 $ npm run build
 $ npm run start
-
+```
 ## Deployment
 ![Azure Architecture](./images/azure.jpeg)
