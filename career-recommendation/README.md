@@ -4,5 +4,5 @@
 
 
 ## Deployment
-![Azure Architecture](/images/azure.jpeg)
+![Azure Architecture](./images/azure.jpeg)
 Format: ![Alt Text](url)
