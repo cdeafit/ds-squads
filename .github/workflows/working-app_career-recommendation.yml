@@ -6,7 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - career-recommendation
 on:
   push:
     branches:
-      - working-app
+      - microsoft-hackathon
   workflow_dispatch:
 
 jobs:
@@ -21,12 +21,17 @@ jobs:
       with:
         node-version: '14.x'
 
-    - name: npm install, build, and test
+    - name: npm install, build, audit fix
       run: |
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-
+        cd career-recommendation 
+        cd frontend 
+        npm cache clean --force
+        npm cache verify
+        rm -rf node_modules
+        npm install --no-optional
+        npm audit fix
+        npm run build
+        
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
@@ -52,5 +57,5 @@ jobs:
       with:
         app-name: 'career-recommendation'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f7abade8ab7241aaaf0f9b2d268b8f2b }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d4d11fa53ef347239892dd4d7d1d8ea8 }}
         package: .
