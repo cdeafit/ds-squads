@@ -24,7 +24,10 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm install
+        npm audit fix
         CI='' npm run build
+        npm install -g serve
+        serve -s build
         npm run test --if-present
         
       working-directory: ./career-recommendation/frontend 
