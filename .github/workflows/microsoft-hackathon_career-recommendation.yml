@@ -52,5 +52,5 @@ jobs:
       with:
         app-name: 'career-recommendation'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f846763ec583447b818b514cd3a0a1fc }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d4d11fa53ef347239892dd4d7d1d8ea8 }}
         package: .
