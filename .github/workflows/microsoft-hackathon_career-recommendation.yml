@@ -25,9 +25,13 @@ jobs:
       run: |
         cd career-recommendation 
         cd frontend 
-        npm install 
+        npm cache clean --force
+        npm cache verify
+        rm -rf node_modules
+        npm install --no-optional
         npm audit fix
         npm run build
+        
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
