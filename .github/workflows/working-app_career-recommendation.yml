@@ -30,7 +30,8 @@ jobs:
         rm -rf node_modules
         npm install
         npm audit fix
-        npm run build
+        npm install sweetalert
+        CI='' npm run build
 
 
     - name: Upload artifact for deployment job
