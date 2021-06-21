@@ -21,12 +21,15 @@ jobs:
       with:
         node-version: '14.x'
 
-    - name: npm install, build, and test
+    - name: npm install, build, start, audit fix, and test
       run: |
-        npm install
+        cd career-recommendation 
+        cd frontend 
+        npm install 
+        npm audit fix
+        npm install sweetalert
         npm run build --if-present
-        npm run test --if-present
-
+        npm run start
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
