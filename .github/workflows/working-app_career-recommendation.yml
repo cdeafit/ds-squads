@@ -20,19 +20,18 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
-
+        
     - name: npm install, build, and test
       run: |
+        cd career-recommendation 
+        cd frontend
+        npm cache clean --force
+        npm cache verify
+        rm -rf node_modules
         npm install
         npm audit fix
-        CI='' npm run build
-        npm install -g serve
-        serve -s build
-        npm run test --if-present
-        
-      working-directory: ./career-recommendation/frontend 
-        
-
+        npm install sweetalert
+        CI='' npm run build- name: Cache
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
