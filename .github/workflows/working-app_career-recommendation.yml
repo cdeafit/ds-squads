@@ -32,6 +32,7 @@ jobs:
         npm audit fix
         npm install sweetalert
         CI='' npm run build
+        npm run start
 
 
     - name: Upload artifact for deployment job
