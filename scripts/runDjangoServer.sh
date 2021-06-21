@@ -1,0 +1,1 @@
+uwsgi --http :8080 --home /home/sammy/Env/firstsite --chdir /home/sammy/firstsite -w firstsite.wsgi
