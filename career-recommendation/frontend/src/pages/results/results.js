@@ -1,14 +1,19 @@
 import React from "react";
 import sistemas from "../../img/sistemas.jpg";
-import derecho from "../../img/Derecho.jpg";
-import nutricion from "../../img/nutricion.jpg";
+//import derecho from "../../img/Derecho.jpg";
+//import nutricion from "../../img/nutricion.jpg";
+import estrellas from "../../img/estrella.png";
 import axios from "axios";
 // import { history } from "../../history";
 import { withRouter } from "react-router-dom";
 import { modelEndpoint, token } from "../../config";
-//import { majorsInfo } from "../../database/jsonParser";
 import { database } from "../../database/databaseParser";
+import { comUni } from "../../database/commentariesParser";
+import { unisIndex } from "../../database/unisIndexParser";
 import inputData from "../../database/inputData";
+import SweetAlert from "sweetalert";
+import Popup from 'reactjs-popup';
+
 
 class Results extends React.Component {
   //clase principal
@@ -38,14 +43,14 @@ class Results extends React.Component {
     };
     this.SelectorHandler = this.SelectorHandler.bind(this);
     this.AuxCareerHandler = this.AuxCareerHandler.bind(this);
+    this.setCommentsUnis = this.setCommentsUnis.bind(this);
     document.title = "Career | Results";
   }
 
   render() {
     return (
       <>
-        <h1>Las carreras que te recomendamos son:</h1>
-
+        <div className="text-animation"><h1>Hola ¡{inputData.name}!</h1><h2>Las carreras recomendadas son:</h2></div>
         <div className="results">
           {this.state.careersUnis.map((career, index) => (
             <div>
@@ -56,21 +61,22 @@ class Results extends React.Component {
                   id="bar1"
                   style={{
                     top:
-                      -306 +
-                      ((90 - this.state.afinity[index].afinidad) * 306) / 100,
+                      -240 +
+                      ((90 - this.state.afinity[index].afinidad) * 240) / 100,
                   }}
-                >
-                  <h3
-                    style={{
-                      fontSize:
-                        60 * ((this.state.afinity[index].afinidad + 10) / 100),
-                    }}
-                  >
-                    {this.state.afinity[index].afinidad}%
-                  </h3>
+                ><div>
+                    <h3
+                      style={{
+                        fontSize:
+                          60 * ((this.state.afinity[index].afinidad + 10) / 100),
+                      }}
+                    >
+                      {this.state.afinity[index].afinidad}%
+                    </h3>
+                  </div>
                 </div>
               </div>
-              <div id="forms">
+              <div className="forms">
                 <form>
                   <h3>¿En dónde te gustaría estudiar?</h3>
                   <select
@@ -93,30 +99,47 @@ class Results extends React.Component {
                     <b>Universidad:</b> {career.Universidad}
                   </li>
                   <li key={Math.random().toString(36).substr(2, 9)}>
-                    <b>Detalles:</b> {career.detalles}
-                  </li>
-                  <li key={Math.random().toString(36).substr(2, 9)}>
-                    <b>Descripción:</b> {career.Descripcion}
-                  </li>
-                  <li key={Math.random().toString(36).substr(2, 9)}>
-                    <b>Tipo de formación:</b> {career["Tipo de formación"]}
+                    <b>Ubicación:</b> {career.Ciudad}
                   </li>
                   <li key={Math.random().toString(36).substr(2, 9)}>
                     <b>Modalidad: </b>
                     {career.Modalidad}
                   </li>
-                  <li key={Math.random().toString(36).substr(2, 9)}>
-                    <b>Duración:</b> {career["Duración"]}
-                  </li>
-                  <li key={Math.random().toString(36).substr(2, 9)}>
-                    <b>Ubicación:</b> {career.Ciudad}
-                  </li>
+                  <details>
+                    <summary>Más información</summary>
+                    <li key={Math.random().toString(36).substr(2, 9)}>
+                      <b>Descripción:</b> {career.Descripcion}
+                    </li>
+                    <li key={Math.random().toString(36).substr(2, 9)}>
+                      <b>Tipo de formación:</b> {career["Tipo de formación"]}
+                    </li>
+                    <li key={Math.random().toString(36).substr(2, 9)}>
+                      <b>Duración:</b> {career["Duración"]}
+                    </li>
+                    <li key={Math.random().toString(36).substr(2, 9)}>
+                      <b>Detalles:</b> {career["detalles"]}
+                    </li>
+                    <li key={Math.random().toString(36).substr(2, 9)}>
+                      <b>Título otorgado:</b> {career["Título otorgado"]}
+                    </li>
+                  </details>
+                  <hr />
+                  <Popup trigger={<button onClick={() =>
+                      this.setCommentsUnis(
+                        career.Universidad,index + 1
+                      )
+                    }><p>Clic para ver comentarios</p><div id="estrella"></div></button>} modal>
+                    <h3>Comentarios para {career.pregrado} en la {career.Universidad}.</h3>
+                    <div id="estrella" style={{ width: 24 * 5 }}></div>
+                    <div id={`popUp${index+1}`} ></div>
+                  </Popup>
                 </ul>
               </div>
             </div>
-          ))}
+          ))
+          }
           <div></div>
-        </div>
+        </div >
         <div className="flex plus">
           <div className="another results">
             <form>
@@ -135,14 +158,15 @@ class Results extends React.Component {
                 <img src={sistemas} alt="" />
                 <div
                   id="bar4"
-                  style={{ top: -306 + ((80 - this.state.rca) * 306) / 100 }}
-                >
-                  <h3 style={{ fontSize: 60 * ((this.state.rca + 30) / 100) }}>
-                    {this.state.rca}%
-                  </h3>
+                  style={{ top: -240 + ((80 - this.state.rca) * 240) / 100 }}
+                ><div>
+                    <h3 style={{ fontSize: 60 * ((this.state.rca + 30) / 100) }}>
+                      {this.state.rca}%
+                    </h3>
+                  </div>
                 </div>
               </div>
-              <div>
+              <div className="forms">
                 <form>
                   <h3>¿En dónde te gustaría estudiar?</h3>
                   <select
@@ -156,29 +180,41 @@ class Results extends React.Component {
                   </select>
                 </form>
                 <ul id="career4" style={{ display: "none" }}>
-                  <li>
+                  <li key={Math.random().toString(36).substr(2, 9)}>
                     <b>Universidad:</b> {this.state.cau.Universidad}
                   </li>
-                  <li>
-                    <b>Detalles:</b> {this.state.cau.detalles}
+                  <li key={Math.random().toString(36).substr(2, 9)}>
+                    <b>Ubicación:</b> {this.state.cau.Ciudad}
                   </li>
-                  <li>
-                    <b>Descripción:</b> {this.state.cau.Descripcion}
-                  </li>
-                  <li>
-                    <b>Tipo de formación:</b>{" "}
-                    {this.state.cau["Tipo de formación"]}
-                  </li>
-                  <li>
+                  <li key={Math.random().toString(36).substr(2, 9)}>
                     <b>Modalidad: </b>
                     {this.state.cau.Modalidad}
                   </li>
-                  <li>
-                    <b>Duración:</b> {this.state.cau["Duración"]}
-                  </li>
-                  <li>
-                    <b>Ubicación:</b> {this.state.cau.Ciudad}
-                  </li>
+                  <details>
+                    <summary>Más información</summary>
+                    <li key={Math.random().toString(36).substr(2, 9)}>
+                      <b>Descripción:</b> {this.state.cau.Descripcion}
+                    </li>
+                    <li key={Math.random().toString(36).substr(2, 9)}>
+                      <b>Tipo de formación:</b> {this.state.cau["Tipo de formación"]}
+                    </li>
+                    <li key={Math.random().toString(36).substr(2, 9)}>
+                      <b>Duración:</b> {this.state.cau["Duración"]}
+                    </li>
+                    <li key={Math.random().toString(36).substr(2, 9)}>
+                      <b>Detalles:</b> {this.state.cau["detalles"]}
+                    </li>
+                    <li key={Math.random().toString(36).substr(2, 9)}>
+                      <b>Título otorgado:</b> {this.state.cau["Título otorgado"]}
+                    </li>
+                  </details>
+                  <hr />
+                  <Popup trigger={<button><p>Clic para ver comentarios</p><div id="estrella"></div></button>} modal>
+                    <h3>Comentarios para {this.state.cau.pregrado} en la {this.state.cau.Universidad}.</h3>
+                    <div id="estrella"></div>
+                    <p>{this.state.cau.Descripcion}</p>
+                  </Popup>
+
                 </ul>
               </div>
             </div>
@@ -232,7 +268,7 @@ class Results extends React.Component {
       }
       
     });*/
-    console.log(c + " " + rc);
+    //console.log(c + " " + rc);
     if (c === "Seleccione una carrera...") {
       document.getElementById(`auxDiv`).style.display = "none";
     } else {
@@ -295,83 +331,80 @@ class Results extends React.Component {
   };
 
   setCareersScores(scores) {
-    try {
-      var careers = [
-        "ADMINISTRACION DE EMPRESAS",
-        "ADMINISTRACION DE NEGOCIOS",
-        "ADMINISTRACION DE NEGOCIOS INTERNACIONALES",
-        "ADMINISTRACIÓN DE EMPRESAS",
-        "ADMINISTRACIÓN EN SALUD OCUPACIONAL",
-        "ARQUITECTURA",
-        "BIOLOGIA",
-        "CIENCIA POLITICA",
-        "CIENCIAS MILITARES",
-        "COMERCIO INTERNACIONAL",
-        "COMUNICACION SOCIAL",
-        "COMUNICACION SOCIAL Y PERIODISMO",
-        "COMUNICACION SOCIAL- PERIODISMO",
-        "CONTADURIA PUBLICA",
-        "CONTADURÍA PÚBLICA",
-        "DERECHO",
-        "DISEÑO GRAFICO",
-        "DISEÑO INDUSTRIAL",
-        "ECONOMIA",
-        "ENFERMERIA",
-        "FISIOTERAPIA",
-        "FONOAUDIOLOGIA",
-        "INGENIERIA AGRONOMICA",
-        "INGENIERIA AMBIENTAL",
-        "INGENIERIA AMBIENTAL Y SANITARIA",
-        "INGENIERIA BIOMEDICA",
-        "INGENIERIA CIVIL",
-        "INGENIERIA DE PETROLEOS",
-        "INGENIERIA DE SISTEMAS",
-        "INGENIERIA ELECTRICA",
-        "INGENIERIA ELECTRONICA",
-        "INGENIERIA INDUSTRIAL",
-        "INGENIERIA MECANICA",
-        "INGENIERIA MECATRONICA",
-        "INGENIERIA QUIMICA",
-        "INSTRUMENTACION QUIRURGICA",
-        "LICENCIATURA EN CIENCIAS SOCIALES",
-        "LICENCIATURA EN EDUCACION PREESCOLAR",
-        "LICENCIATURA EN PEDAGOGIA INFANTIL",
-        "LICENCIATURA EN PEDAGOGÍA INFANTIL",
-        "MEDICINA",
-        "MEDICINA VETERINARIA",
-        "MEDICINA VETERINARIA Y ZOOTECNIA",
-        "MERCADEO",
-        "NEGOCIOS INTERNACIONALES",
-        "NUTRICION Y DIETETICA",
-        "ODONTOLOGIA",
-        "PSICOLOGIA",
-        "PSICOLOGÍA",
-        "PUBLICIDAD",
-        "RELACIONES INTERNACIONALES",
-        "SALUD OCUPACIONAL",
-        "SOCIOLOGIA",
-        "TRABAJO SOCIAL",
-      ];
-      var careers_prob = {};
-      let i = 0;
-      careers.forEach((element) => {
-        careers_prob[element.toLowerCase()] = scores[i];
-        i++;
-      });
-      //Selectores
-      var sel = document.getElementById("auxCareer");
-      for (const [key, value] of Object.entries(careers_prob)) {
-        var opt = document.createElement("option");
-        opt.appendChild(document.createTextNode(key));
-        opt.text = key;
-        opt.value = value;
-        sel.appendChild(opt);
-        this.setState({ careersAffinities: careers_prob });
-        return careers_prob;
-      }
-    } catch {
-      this.errorHandleEvent();
+
+    var careers = [
+      "ADMINISTRACION DE EMPRESAS",
+      "ADMINISTRACION DE NEGOCIOS",
+      "ADMINISTRACION DE NEGOCIOS INTERNACIONALES",
+      "ADMINISTRACIÓN DE EMPRESAS",
+      "ADMINISTRACIÓN EN SALUD OCUPACIONAL",
+      "ARQUITECTURA",
+      "BIOLOGIA",
+      "CIENCIA POLITICA",
+      "CIENCIAS MILITARES",
+      "COMERCIO INTERNACIONAL",
+      "COMUNICACION SOCIAL",
+      "COMUNICACION SOCIAL Y PERIODISMO",
+      "COMUNICACION SOCIAL- PERIODISMO",
+      "CONTADURIA PUBLICA",
+      "CONTADURÍA PÚBLICA",
+      "DERECHO",
+      "DISEÑO GRAFICO",
+      "DISEÑO INDUSTRIAL",
+      "ECONOMIA",
+      "ENFERMERIA",
+      "FISIOTERAPIA",
+      "FONOAUDIOLOGIA",
+      "INGENIERIA AGRONOMICA",
+      "INGENIERIA AMBIENTAL",
+      "INGENIERIA AMBIENTAL Y SANITARIA",
+      "INGENIERIA BIOMEDICA",
+      "INGENIERIA CIVIL",
+      "INGENIERIA DE PETROLEOS",
+      "INGENIERIA DE SISTEMAS",
+      "INGENIERIA ELECTRICA",
+      "INGENIERIA ELECTRONICA",
+      "INGENIERIA INDUSTRIAL",
+      "INGENIERIA MECANICA",
+      "INGENIERIA MECATRONICA",
+      "INGENIERIA QUIMICA",
+      "INSTRUMENTACION QUIRURGICA",
+      "LICENCIATURA EN CIENCIAS SOCIALES",
+      "LICENCIATURA EN EDUCACION PREESCOLAR",
+      "LICENCIATURA EN PEDAGOGIA INFANTIL",
+      "LICENCIATURA EN PEDAGOGÍA INFANTIL",
+      "MEDICINA",
+      "MEDICINA VETERINARIA",
+      "MEDICINA VETERINARIA Y ZOOTECNIA",
+      "MERCADEO",
+      "NEGOCIOS INTERNACIONALES",
+      "NUTRICION Y DIETETICA",
+      "ODONTOLOGIA",
+      "PSICOLOGIA",
+      "PSICOLOGÍA",
+      "PUBLICIDAD",
+      "RELACIONES INTERNACIONALES",
+      "SALUD OCUPACIONAL",
+      "SOCIOLOGIA",
+      "TRABAJO SOCIAL",
+    ];
+    var careers_prob = {};
+    let i = 0;
+    careers.forEach((element) => {
+      careers_prob[element.toLowerCase()] = Math.random(); // scores[i];
+      i++;
+    });
+    //Selectores
+    var sel = document.getElementById("auxCareer");
+    for (const [key, value] of Object.entries(careers_prob)) {
+      var opt = document.createElement("option");
+      opt.appendChild(document.createTextNode(key));
+      opt.text = key;
+      opt.value = value;
+      sel.appendChild(opt);
     }
+    this.setState({ careersAffinities: careers_prob });
+    return careers_prob;
   }
 
   errorHandleEvent() {
@@ -380,7 +413,7 @@ class Results extends React.Component {
 
   setSelecterInfo(key, id) {
     //Función para ingresar universidad al dropdownlist
-    //var i = 1;
+    var i = 1;
     var sel = document.getElementById("aditionalCareer" + id);
     this.state.careersData.forEach(function (obj) {
       if (obj.pregrado === key) {
@@ -394,101 +427,130 @@ class Results extends React.Component {
     });
   }
 
-  top3Careers(dictAux) {
-    var dict = { ...dictAux };
-    var bestsValue = [];
-    var bestsKeys = [];
-    var i = 0;
-    var aux = 0;
-    var auxKey = "";
-    do {
-      var auxValues = this.greaterKey(dict);
-      auxKey = auxValues[0];
-      aux = auxValues[1];
-      delete dict[auxKey];
-      bestsKeys.push(auxKey);
-      bestsValue.push(parseFloat((aux * 100).toFixed(2)));
-      i++;
-    } while (i < 3);
-
-    console.log(bestsKeys);
-    var cr = [...this.state.afinity];
-    // console.log(bestsKeys)
-    cr[0] = { pregrado: bestsKeys[0], afinidad: bestsValue[0] };
-    cr[1] = { pregrado: bestsKeys[1], afinidad: bestsValue[1] };
-    cr[2] = { pregrado: bestsKeys[2], afinidad: bestsValue[2] };
-    this.setState({ afinity: cr });
-  }
-
-  greaterKey(dict) {
-    var aux = 0;
-    var auxKey = "";
-    Object.entries(dict).forEach(([key, value]) => {
-      if (value > aux) {
-        aux = value;
-        auxKey = key;
+  getCommId(key) {
+    unisIndex.forEach(function (obj) {
+      if (obj.nombre === key) {
+        return obj["id"];
       }
     });
-    // const affinities = [];
-    // Object.entries(dict).forEach(([key, value]) => {
-    //   affinities.push(key, value);
-    // });
-    // affinities.sort((a, b) => a[1] - b[1]);
+  }
 
-    // console.log(affinities);
-    return [auxKey, aux];
-  }
-  async predict_career(language, math, humanity, science, english) {
-    //Función para llamar el modelo en la nube
-    try {
-      const body = {
-        instances: [
-          [
-            science,
-            humanity,
-            humanity,
-            science,
-            english,
-            language,
-            math,
-            science,
-          ],
-        ],
-      };
-      const res = await axios.post(
-        `https://thingproxy.freeboard.io/fetch/${modelEndpoint}`,
-        body,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Access-Control-Allow-Origin": "*",
-          },
+      setCommentsUnis(key,index) { //Función para añadir comentarios al popup
+        console.log(key);
+        var sel = document.getElementById("popUp" + index);
+        console.log(sel);
+        comUni.forEach(function (obj) {
+          if (obj["id_local"] === this.getCommId(key)) {
+            console.log("a");
+            var opt = document.createElement("div");
+            const com = obj.comentario;
+            const stars = obj.calificacion;
+            var pCom = document.createElement("p");
+            var pStars = document.createElement("p");
+            pCom.appendChild(document.createTextNode('"' + com + '"'));
+            pStars.appendChild(document.createTextNode('"' + stars + '"'));
+            opt.appendChild(pCom);
+            opt.appendChild(pStars);
+            sel.appendChild(opt);
+            return;
+          }
         }
-      );
-      // console.log(res.data.predictions[0]);
-      return res.data.predictions[0];
-    } catch (e) {
-      //console.log(e);
-      this.errorHandleEvent();
+        );
+      }
+
+      top3Careers(dictAux) {
+        var dict = { ...dictAux };
+        var bestsValue = [];
+        var bestsKeys = [];
+        var i = 0;
+        var aux = 0;
+        var auxKey = "";
+        do {
+          var auxValues = this.greaterKey(dict);
+          auxKey = auxValues[0];
+          aux = auxValues[1];
+          delete dict[auxKey];
+          bestsKeys.push(auxKey);
+          bestsValue.push(parseFloat((aux * 100).toFixed(2)));
+          i++;
+        } while (i < 3);
+
+        //console.log(bestsKeys);
+        var cr = [...this.state.afinity];
+        // console.log(bestsKeys)
+        cr[0] = { pregrado: bestsKeys[0], afinidad: bestsValue[0] };
+        cr[1] = { pregrado: bestsKeys[1], afinidad: bestsValue[1] };
+        cr[2] = { pregrado: bestsKeys[2], afinidad: bestsValue[2] };
+        this.setState({ afinity: cr });
+      }
+
+      greaterKey(dict) {
+        var aux = 0;
+        var auxKey = "";
+        Object.entries(dict).forEach(([key, value]) => {
+          if (value > aux) {
+            aux = value;
+            auxKey = key;
+          }
+        });
+        return [auxKey, aux];
+      }
+      async predict_career(language, math, humanity, science, english) {
+        //Función para llamar el modelo en la nube
+        try {
+          const body = {
+            instances: [
+              [
+                science,
+                humanity,
+                humanity,
+                science,
+                english,
+                language,
+                math,
+                science,
+              ],
+            ],
+          };
+          const res = await axios.post(
+            `https://thingproxy.freeboard.io/fetch/${modelEndpoint}`,
+            body,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Access-Control-Allow-Origin": "*",
+              },
+            }
+          );
+          // console.log(res.data.predictions[0]);
+          return res.data.predictions[0];
+        } catch (e) {
+          //console.log(e);
+          this.errorHandleEvent();
+        }
+      }
+      async componentDidMount() {
+        //Función pre-mounting
+        if (inputData.isDone === false) {
+          //this.props.history.push("/");
+        }
+        /*
+            let scoresList = await this.predict_career(
+            inputData.res1,
+            inputData.res2,
+            inputData.res3,
+            inputData.res4,
+            inputData.res5
+            );
+            */
+        let dict = await this.setCareersScores([]); //(scoresList);
+        await this.top3Careers(dict);
+        for (var i = 0; i < 3; i++) this.setSelecterInfo(this.state.afinity[i].pregrado, i + 1);
+      }
+
+
     }
-  }
-  async componentDidMount() {
-    //Función pre-mounting
-    if (inputData.isDone === false) {
-      this.props.history.push("/");
-    }
-    let scoresList = await this.predict_career(
-      inputData.res1,
-      inputData.res2,
-      inputData.res3,
-      inputData.res4,
-      inputData.res5
-    );
-    let dict = await this.setCareersScores(scoresList);
-    this.top3Careers(dict);
-    for (var i = 0; i < 3; i++)
-      this.setSelecterInfo(this.state.afinity[i].pregrado, i + 1);
-  }
-}
+
+
 
 export default withRouter(Results);
