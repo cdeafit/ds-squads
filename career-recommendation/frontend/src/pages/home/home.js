@@ -1,7 +1,9 @@
 import React from "react";
+import { Lightbox } from "react-modal-image";
 import mujerCareer from "../../img/mujer-career.png";
+import loadingIcon from "../../img/carga.gif";
 //import { Link } from "react-router-dom";
-//import axios from "axios";
+import axios from "axios";
 import SweetAlert from "sweetalert";
 import inputData from "../../database/inputData";
 
@@ -15,9 +17,12 @@ class Home extends React.Component {
       r3: 0,
       r4: 0,
       r5: 0,
+      isLoading: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.formChangeEvent = this.formChangeEvent.bind(this);
+
   }
 
   handleSubmit() {
@@ -39,17 +44,23 @@ class Home extends React.Component {
     check.forEach((element) => {
       if (element !== 0) return (allZeros = false);
     });
-    if (allZeros){
+    if (allZeros) {
       SweetAlert({
         title: "Alerta",
         text: "¿Todos tus resultados de tu ICFES fueron cero (0)?",
         icon: "warning",
-        buttons: ["Corregir","Continuar"]
-      }).then(respuesta => {if(respuesta)this.props.history.push("/results")});
-    }else{
+        buttons: ["Corregir", "Continuar"]
+      }).then(respuesta => { if (respuesta) this.props.history.push("/results") });
+    } else {
       this.props.history.push("/results");
     }
     inputData.isDone = true;
+  }
+
+  handleInputChange(e) {
+    if (e.target.value.match("^[a-zA-Z ]*$") != null) {
+      this.setState({ UserName: e.target.value });
+    }
   }
 
   valueChecker(value, id) {
@@ -108,23 +119,75 @@ class Home extends React.Component {
     this.submitChecker();
   }
 
-  handleFocus = (event) => event.target.select();
+  handleFocus = (event) => event.target.select(); //handler de formulario numerico
+
+  onUploadPdf = async (event) => { //Request del pdf
+    this.setState({ isLoading: true });
+    try {
+      const obj = { script: event.target.files[0] };
+      const data = new FormData();
+      Object.keys(obj).forEach(key => data.append(key, obj[key]));
+      console.log(data.get("script"));
+      const res = await axios.post("http://23.96.36.59:443/api/parsepdf", data);
+      console.log(res.data);
+      inputData.res1 = res.data["lectura_critica"];
+      inputData.res2 = res.data["matematicas"];
+      inputData.res3 = res.data["sociales_y_ciudadanas"];
+      inputData.res4 = res.data["ciencias_naturales"];
+      inputData.res5 = res.data["ingles"];
+      this.props.history.push("/results");
+    }
+    catch (e) {
+      this.setState({ isLoading: false });
+      SweetAlert({
+        title: "Error al leer archivo",
+        text: "No hemos podido reconocer tu archivo PDF, si sigues presentando este problema, por favor, diligencia el formulario.",
+        icon: "error",
+      });
+    }
+
+  };
+
+  formChangeEvent(index, event) {
+    inputData.name = event.target.value;
+  }
 
   render() {
     return (
       <>
-        <h2>Ingresa tus resultados! 👇</h2>
         <div className="flex input">
           <div>
             <div>
               <img src={mujerCareer} alt="" draggable="false" />
             </div>
           </div>
+          <div>
+            <label for="uploadFile">Sube aquí el PDF con los resultados de tus ICFES</label>
+            <input id="uploadFile" onChange={this.onUploadPdf} type="file" accept=".pdf" />
+            {
+              this.state.isLoading && (
+                <Lightbox
+                  hideZoom={true}
+                  hideDownload={true}
+                  medium={loadingIcon}
+                  large={loadingIcon}
+                />
+              )
+            }
+          </div>
           <div className="flex">
+            <p><i>Si no tienes el PDF con los resultados o tienes dificultades para subirlo, también puedes diligenciar el siguiente <b>formulario</b></i></p>
+            <div>
+              <h3>Información personal</h3>
+              <input type="number" placeholder="Número de documento" />
+              <input type="text" placeholder="Nombre" onChange={event => this.formChangeEvent(2, event)} />
+              <input type="email" placeholder="Correo" />
+              <input type="text" placeholder="Departamento" />
+            </div>
             <div>
               <h3>Lectura crítica</h3>
               <p id="ra1" style={{ display: "none" }}>
-                Valor inválido! 😢
+                ¡Valor inválido! 😢
               </p>
               <input
                 type="number"
@@ -136,7 +199,7 @@ class Home extends React.Component {
             <div>
               <h3>Matemáticas</h3>
               <p id="ra2" style={{ display: "none" }}>
-                Valor inválido! 😢
+                ¡Valor inválido! 😢
               </p>
               <input
                 type="number"
@@ -148,7 +211,7 @@ class Home extends React.Component {
             <div>
               <h3>Sociales y ciudadanas</h3>
               <p id="ra3" style={{ display: "none" }}>
-                Valor inválido! 😢
+                ¡Valor inválido! 😢
               </p>
               <input
                 type="number"
@@ -160,7 +223,7 @@ class Home extends React.Component {
             <div>
               <h3>Ciencias naturales</h3>
               <p id="ra4" style={{ display: "none" }}>
-                Valor inválido! 😢
+                ¡Valor inválido! 😢
               </p>
               <input
                 type="number"
@@ -172,7 +235,7 @@ class Home extends React.Component {
             <div>
               <h3>Inglés</h3>
               <p id="ra5" style={{ display: "none" }}>
-                Valor inválido! 😢
+                ¡Valor inválido! 😢
               </p>
               <input
                 type="number"
@@ -183,9 +246,9 @@ class Home extends React.Component {
             </div>
 
             <div>
-                <button id="submitButton" onClick={this.handleSubmit}>
-                  Resultado
-                </button>
+              <button id="submitButton" onClick={this.handleSubmit}>
+                Ver carreras
+              </button>
             </div>
           </div>
         </div>

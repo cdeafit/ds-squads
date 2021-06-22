@@ -1,0 +1,1 @@
+export const comUni = require("./commentaries.json")
