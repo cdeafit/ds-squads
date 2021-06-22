@@ -224,32 +224,16 @@ class Results extends React.Component {
             <h2>¿Cómo funciona?</h2>
             <p>
               <i>
-                Mauris dictum lorem eu diam gravida, ac condimentum risus
-                tempor. Quisque justo nunc, egestas ac sollicitudin eget,
-                volutpat ut nunc. Donec mi justo, sollicitudin quis dictum quis,
-                bibendum sit amet lacus. Proin id vestibulum nisl. Praesent
-                auctor eget est eu maximus. Aliquam rutrum urna ac est vehicula,
-                et bibendum lorem feugiat. Quisque a fermentum purus, sed dictum
-                neque. Morbi eget nunc sagittis, tempus nunc non, fringilla
-                ligula. Phasellus ullamcorper eleifend lacus, feugiat egestas
-                erat venenatis eu. Nam sit amet urna velit. Etiam nec justo
-                laoreet, feugiat risus nec, aliquam ex. Donec varius condimentum
-                neque ut laoreet. Aliquam sit amet dui id ipsum vehicula mollis
-                non vel enim. Sed maximus augue at eros interdum faucibus.
-                Maecenas dictum quis elit et cursus.
+              Las recomendaciones de carrera basadas en los resultados obtenidos por el estudiante en la prueba saber 11, serán brindadas por un modelo de predicción perteneciente a la categoría de Machine Learning, al cual se le debe pasar como entrada los puntajes obtenidos en la prueba, posterior a esto, la página abrirá una nueva pestaña con tres recomendaciones, las carreras más afines a tus puntajes y el porcentaje de compatibilidad, debajo de cada una de ellas también, podrás obtener una breve descripción con información de utilidad.
               </i>
             </p>
             <p>
-              Donec eget tincidunt velit. Nullam blandit orci ac lacus lobortis
-              luctus a non metus. Etiam blandit vehicula finibus. Phasellus
-              fringilla quis neque ac euismod. Sed tincidunt nec purus ac
-              laoreet. Nullam sodales consectetur pharetra. Nunc luctus iaculis
-              risus, in eleifend sem euismod sed. Maecenas hendrerit luctus
-              posuere. Nam porttitor nulla et sapien ultricies, et blandit diam
-              tincidunt. Nam dapibus, nisi in vehicula bibendum, nisi ligula
-              mollis augue, ac porttitor ipsum sapien vel nibh. Mauris dictum
-              magna non libero lacinia tempus. Ut lacinia massa a luctus porta.
-              Cras dignissim faucibus sem, eu aliquam eros vestibulum a.
+              <i>
+              Adicionalmente, como también se usaron técnicas de web scrapping, en las recomendaciones que recibe el usuario también hay detalles como universidades que ofrecen la carrera, modalidad, créditos, etc.
+Un ejemplo del uso de la herramienta es el siguiente: "Soy estudiante de último año de bachillerato y quiero una recomendación sobre qué carrera elegir. Mis resultados en la prueba Saber 11 fueron: 51 en ciencias naturales, 72 en competencias ciudadanas, 84 en inglés, 75 en español, 80 en matemáticas".
+
+Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en esta situación, entonces puedes buscar la que te gusta, obtendrás un porcentaje de afinidad y la información.
+              </i>
             </p>
           </div>
         </div>
