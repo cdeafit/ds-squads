@@ -4,7 +4,8 @@ from azure.ai.formrecognizer import FormRecognizerClient
 from azure.core.credentials import AzureKeyCredential
 # import json
 from rest_framework import viewsets, status, generics
-
+import tensorflow as tf
+from tensorflow.contrib import predictor
 
 # Create your views here.
 # ruta = "AC201941311901.pdf"
@@ -15,7 +16,7 @@ credential = AzureKeyCredential("21e184065b864942b0915c655bbf3560")
 
 class ReportView(generics.RetrieveAPIView):
 
-    def get(self, request):
+    def post(self, request):
 
         form_recognizer_client = FormRecognizerClient(endpoint, credential)
         model_id = "854c6870-3a84-4e76-963f-ad1edd7f1364"
@@ -27,3 +28,43 @@ class ReportView(generics.RetrieveAPIView):
         for key, value1 in values.items():
             cleaned_data[key] = value1.value
         return Response(cleaned_data, status=status.HTTP_200_OK)
+
+
+class ModelView(generics.RetrieveAPIView):
+
+    def predict_career(self, biologia, ciencias_sociales, filosofia, fisica, ingles, lenguaje, matematicas, quimica):
+        loaded = predictor.from_saved_model(
+            "./backend/1624347292")
+        feature = {
+            'punt_biologia': tf.train.Feature(float_list=tf.train.FloatList(value=[biologia])),
+            'punt_ciencias_sociales': tf.train.Feature(float_list=tf.train.FloatList(value=[ciencias_sociales])),
+            'punt_filosofia': tf.train.Feature(float_list=tf.train.FloatList(value=[filosofia])),
+            'punt_fisica': tf.train.Feature(float_list=tf.train.FloatList(value=[fisica])),
+            'punt_ingles': tf.train.Feature(float_list=tf.train.FloatList(value=[ingles])),
+            'punt_lenguaje': tf.train.Feature(float_list=tf.train.FloatList(value=[lenguaje])),
+            'punt_matematicas': tf.train.Feature(float_list=tf.train.FloatList(value=[matematicas])),
+            'punt_quimica': tf.train.Feature(float_list=tf.train.FloatList(value=[quimica]))
+        }
+        example = tf.train.Example(
+            features=tf.train.Features(
+                feature=feature
+            )
+        )
+        serialized_example = example.SerializeToString()
+        predictions = loaded({"inputs": [serialized_example]})
+        return predictions
+
+    def get(self, request):
+
+        biologia = request.query_params.get("biologia", 0)
+        ciencias_sociales = request.query_params.get("ciencias_sociales", 0)
+        filosofia = request.query_params.get("filosofia", 0)
+        fisica = request.query_params.get("fisica", 0)
+        ingles = request.query_params.get("ingles", 0)
+        lenguaje = request.query_params.get("lenguaje", 0)
+        matematicas = request.query_params.get("matematicas", 0)
+        quimica = request.query_params.get("quimica", 0)
+
+        prediction = self.predict_career(
+            biologia, ciencias_sociales, filosofia, fisica, ingles, lenguaje, matematicas, quimica)
+        return Response(prediction, status=status.HTTP_200_OK)
