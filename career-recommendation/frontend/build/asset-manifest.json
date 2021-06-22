@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0ef8cd2e.chunk.css",
+    "main.js": "/static/js/main.f770f3f2.chunk.js",
+    "main.js.map": "/static/js/main.f770f3f2.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c473e235.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c473e235.js.map",
+    "static/js/2.427821ee.chunk.js": "/static/js/2.427821ee.chunk.js",
+    "static/js/2.427821ee.chunk.js.map": "/static/js/2.427821ee.chunk.js.map",
+    "static/js/3.2777adc7.chunk.js": "/static/js/3.2777adc7.chunk.js",
+    "static/js/3.2777adc7.chunk.js.map": "/static/js/3.2777adc7.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.0ef8cd2e.chunk.css.map": "/static/css/main.0ef8cd2e.chunk.css.map",
+    "static/js/2.427821ee.chunk.js.LICENSE.txt": "/static/js/2.427821ee.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/carreras.643735d9.png",
+    "static/media/Derecho.09c3d7b4.jpg": "/static/media/Derecho.09c3d7b4.jpg",
+    "static/media/career.51c00435.png": "/static/media/career.51c00435.png",
+    "static/media/mujer-career.6e420467.png": "/static/media/mujer-career.6e420467.png",
+    "static/media/nofound.21ed3ef5.svg": "/static/media/nofound.21ed3ef5.svg",
+    "static/media/nutricion.a1e7280a.jpg": "/static/media/nutricion.a1e7280a.jpg",
+    "static/media/pride.038968da.png": "/static/media/pride.038968da.png",
+    "static/media/sistemas.336693a8.jpg": "/static/media/sistemas.336693a8.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c473e235.js",
+    "static/js/2.427821ee.chunk.js",
+    "static/css/main.0ef8cd2e.chunk.css",
+    "static/js/main.f770f3f2.chunk.js"
+  ]
+}
