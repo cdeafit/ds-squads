@@ -48,6 +48,7 @@ class Results extends React.Component {
     this.setCommentsUnis = this.setCommentsUnis.bind(this);
     document.title = "Career | Results";
     document.documentElement.scrollTop = 0;
+    this.selectorRef = React.createRef()
   }
 
   render() {
@@ -147,7 +148,8 @@ class Results extends React.Component {
               <h3>¿Quieres saber de otra carrera?</h3>
               <select
                 name="Seleccione una carrera"
-                id="auxCareer"
+                // id="auxCareer"
+                ref={this.selectorRef}
                 onChange={this.AuxCareerHandler}
               >
                 <option name="default">Seleccione una carrera...</option>
@@ -245,7 +247,8 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
   AuxCareerHandler() {
     document.getElementById("career4").style.display = "none";
     this.cleanAuxDropDownList();
-    var e = document.getElementById("auxCareer");
+    //var e = document.getElementById("auxCareer");
+    var e = this.selectorRef.current
     var c = e.options[e.selectedIndex].text;
     var rc = e.options[e.selectedIndex].value;
     if (c === "Seleccione una carrera...") {
@@ -440,7 +443,8 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
 
   setAuxCareerInfo(careers_prob){
         //Selectores
-        var sel = document.getElementById("auxCareer");
+        // var sel = document.getElementById("auxCareer");
+        var sel = this.selectorRef.current 
         console.log(sel);
         for (var obj in careers_prob) {
           var opt = document.createElement("option");
