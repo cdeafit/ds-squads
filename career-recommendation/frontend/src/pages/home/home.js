@@ -145,7 +145,6 @@ class Home extends React.Component {
         icon: "error",
       });
     }
-
   };
 
   formChangeEvent(index, event) {

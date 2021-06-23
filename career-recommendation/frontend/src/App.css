@@ -513,6 +513,13 @@ input::-webkit-inner-spin-button {
   animation:estrellas 3s steps(5) 1 normal;
 }
 
+#estrellaSolid{
+  width: 120px;
+  height: 24px;
+  margin: auto;
+  background-image: url(img/estrella.png);
+}
+
 @keyframes estrellas{
   0%{width: 0px;}
   100%{width: 120px;}
@@ -589,6 +596,7 @@ input::-webkit-inner-spin-button {
 
 .popup-content p{
   color: #ffffff;
+  text-align: center;
 }
 
 

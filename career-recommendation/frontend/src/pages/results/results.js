@@ -22,24 +22,26 @@ class Results extends React.Component {
     this.state = {
       afinity: [
         {
-          pregrado: "Carrera1",
-          afinidad: 100,
+          pregrado: "negocios internacionales", //"Carrera1",  //demo
+          afinidad: 96.40,  //demo
         },
         {
-          pregrado: "Carrera2",
-          afinidad: 100,
+          pregrado: "economia",//"Carrera2",  //demo
+          afinidad: 85.12,  //demo
         },
         {
-          pregrado: "Carrera3",
-          afinidad: 100,
+          pregrado: "mercadeo",//"Carrera3",  //demo
+          afinidad: 73.54,  //demo
         },
       ],
       careersUnis: [{}, {}, {}],
+      commsUnis: [{}, {}, {}],
       careersData: database,
       careersAffinities: {},
       ca: "Carrera4",
       rca: 100,
       cau: {},
+      caucomms: {},
     };
     this.SelectorHandler = this.SelectorHandler.bind(this);
     this.AuxCareerHandler = this.AuxCareerHandler.bind(this);
@@ -124,14 +126,12 @@ class Results extends React.Component {
                     </li>
                   </details>
                   <hr />
-                  <Popup trigger={<button onClick={() =>
-                      this.setCommentsUnis(
-                        career.Universidad,index + 1
-                      )
-                    }><p>Clic para ver comentarios</p><div id="estrella"></div></button>} modal>
+                  <Popup trigger={<button><p>Clic para ver comentarios</p><div id="estrella"></div></button>} modal>
                     <h3>Comentarios para {career.pregrado} en la {career.Universidad}.</h3>
-                    <div id="estrella" style={{ width: 24 * 5 }}></div>
-                    <div id={`popUp${index+1}`} ></div>
+                    <div id="estrellaSolid" style={{ width: 24 * this.state.commsUnis[index].calificacion }}></div>
+                    <p>{this.state.commsUnis[index].comentario}</p>
+                    <p>{this.state.commsUnis[index].tags}</p>
+                    
                   </Popup>
                 </ul>
               </div>
@@ -158,7 +158,7 @@ class Results extends React.Component {
                 <img src={sistemas} alt="" />
                 <div
                   id="bar4"
-                  style={{ top: -240 + ((80 - this.state.rca) * 240) / 100 }}
+                  style={{ top: -215 + ((80 - this.state.rca) * 215) / 100 }}
                 ><div>
                     <h3 style={{ fontSize: 60 * ((this.state.rca + 30) / 100) }}>
                       {this.state.rca}%
@@ -211,8 +211,9 @@ class Results extends React.Component {
                   <hr />
                   <Popup trigger={<button><p>Clic para ver comentarios</p><div id="estrella"></div></button>} modal>
                     <h3>Comentarios para {this.state.cau.pregrado} en la {this.state.cau.Universidad}.</h3>
-                    <div id="estrella"></div>
-                    <p>{this.state.cau.Descripcion}</p>
+                    <div id="estrellaSolid" style={{ width: 24 * this.state.caucomms.calificacion }}></div>
+                    <p>{this.state.caucomms.calificacion}</p>
+                    <p>{this.state.caucomms.comentario}</p>
                   </Popup>
 
                 </ul>
@@ -223,32 +224,16 @@ class Results extends React.Component {
             <h2>¿Cómo funciona?</h2>
             <p>
               <i>
-                Mauris dictum lorem eu diam gravida, ac condimentum risus
-                tempor. Quisque justo nunc, egestas ac sollicitudin eget,
-                volutpat ut nunc. Donec mi justo, sollicitudin quis dictum quis,
-                bibendum sit amet lacus. Proin id vestibulum nisl. Praesent
-                auctor eget est eu maximus. Aliquam rutrum urna ac est vehicula,
-                et bibendum lorem feugiat. Quisque a fermentum purus, sed dictum
-                neque. Morbi eget nunc sagittis, tempus nunc non, fringilla
-                ligula. Phasellus ullamcorper eleifend lacus, feugiat egestas
-                erat venenatis eu. Nam sit amet urna velit. Etiam nec justo
-                laoreet, feugiat risus nec, aliquam ex. Donec varius condimentum
-                neque ut laoreet. Aliquam sit amet dui id ipsum vehicula mollis
-                non vel enim. Sed maximus augue at eros interdum faucibus.
-                Maecenas dictum quis elit et cursus.
+              Las recomendaciones de carrera basadas en los resultados obtenidos por el estudiante en la prueba saber 11, serán brindadas por un modelo de predicción perteneciente a la categoría de Machine Learning, al cual se le debe pasar como entrada los puntajes obtenidos en la prueba, posterior a esto, la página abrirá una nueva pestaña con tres recomendaciones, las carreras más afines a tus puntajes y el porcentaje de compatibilidad, debajo de cada una de ellas también, podrás obtener una breve descripción con información de utilidad.
               </i>
             </p>
             <p>
-              Donec eget tincidunt velit. Nullam blandit orci ac lacus lobortis
-              luctus a non metus. Etiam blandit vehicula finibus. Phasellus
-              fringilla quis neque ac euismod. Sed tincidunt nec purus ac
-              laoreet. Nullam sodales consectetur pharetra. Nunc luctus iaculis
-              risus, in eleifend sem euismod sed. Maecenas hendrerit luctus
-              posuere. Nam porttitor nulla et sapien ultricies, et blandit diam
-              tincidunt. Nam dapibus, nisi in vehicula bibendum, nisi ligula
-              mollis augue, ac porttitor ipsum sapien vel nibh. Mauris dictum
-              magna non libero lacinia tempus. Ut lacinia massa a luctus porta.
-              Cras dignissim faucibus sem, eu aliquam eros vestibulum a.
+              <i>
+              Adicionalmente, como también se usaron técnicas de web scrapping, en las recomendaciones que recibe el usuario también hay detalles como universidades que ofrecen la carrera, modalidad, créditos, etc.
+Un ejemplo del uso de la herramienta es el siguiente: "Soy estudiante de último año de bachillerato y quiero una recomendación sobre qué carrera elegir. Mis resultados en la prueba Saber 11 fueron: 51 en ciencias naturales, 72 en competencias ciudadanas, 84 en inglés, 75 en español, 80 en matemáticas".
+
+Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en esta situación, entonces puedes buscar la que te gusta, obtendrás un porcentaje de afinidad y la información.
+              </i>
             </p>
           </div>
         </div>
@@ -262,13 +247,6 @@ class Results extends React.Component {
     var e = document.getElementById("auxCareer");
     var c = e.options[e.selectedIndex].text;
     var rc = e.options[e.selectedIndex].value;
-    /*Object.entries(this.state.careersAffinities).forEach(([key, value]) => {
-      if (key === c) {
-        return (a = value);
-      }
-      
-    });*/
-    //console.log(c + " " + rc);
     if (c === "Seleccione una carrera...") {
       document.getElementById(`auxDiv`).style.display = "none";
     } else {
@@ -292,12 +270,10 @@ class Results extends React.Component {
 
   SelectorHandler(index, pregrado) {
     //handlerEvent para los dropdownlist
-
     var e = document.getElementById(`aditionalCareer${index}`);
     var c = e.options[e.selectedIndex].text;
     var u = {};
     this.state.careersData.forEach(function (obj) {
-      //console.log("pre If "+c);
       if (obj.pregrado === pregrado && obj.Universidad === c) {
         u = obj;
       }
@@ -308,6 +284,7 @@ class Results extends React.Component {
     if (c === "Selecciona una universidad...") {
       document.getElementById(`career${index}`).style.display = "none";
     } else {
+      this.setCommentsUnis(c,index);
       document.getElementById(`career${index}`).style.display = "block";
     }
   }
@@ -329,6 +306,47 @@ class Results extends React.Component {
       };
     }
   };
+
+  onUpdateComm = (i, u) => {
+    //función para cambiar a la universidad en el dropdownlist
+    if (i === 3) {
+      this.setState({ caucomms: u });
+    } else {
+      const list = this.state.commsUnis.map((item, j) => {
+        if (j === i) {
+          var commsUnis = [...this.state.commsUnis];
+          commsUnis[j] = u;
+          this.setState({ commsUnis });
+        }
+      });
+      return {
+        list,
+      };
+    }
+  };
+
+    async setCommentsUnis(key,index) { //Función para añadir comentarios al popup
+        var u = "";
+        var comm = {};
+        unisIndex.forEach(function (obj) {
+          if (obj.nombre === key) {
+            u = obj.id;
+          }
+        });
+        comUni.forEach(function (obj) {
+          if (obj["id_local"] === u) {
+            comm = obj;
+          }
+        }
+        );
+        if(!("calificacion" in comm)){comm.calificacion = 1}else{comm.calificacion = parseInt(comm.calificacion[0]);}
+        if(!("comentario" in comm) || comm.comentario.length === 0)  comm.comentario = "Sin comentario";
+        const update = (id) => this.onUpdateComm(id - 1, comm);
+        if (!(Object.keys(comm).length === 0 && comm.constructor === Object)) await update(index);
+      }
+
+
+  //------------------------------------
 
   setCareersScores(scores) {
 
@@ -391,7 +409,7 @@ class Results extends React.Component {
     var careers_prob = {};
     let i = 0;
     careers.forEach((element) => {
-      careers_prob[element.toLowerCase()] = Math.random(); // scores[i];
+      careers_prob[element.toLowerCase()] = Math.random()* (0.7 - 0) + 0; // scores[i];  //demo
       i++;
     });
     //Selectores
@@ -413,7 +431,6 @@ class Results extends React.Component {
 
   setSelecterInfo(key, id) {
     //Función para ingresar universidad al dropdownlist
-    var i = 1;
     var sel = document.getElementById("aditionalCareer" + id);
     this.state.careersData.forEach(function (obj) {
       if (obj.pregrado === key) {
@@ -423,40 +440,10 @@ class Results extends React.Component {
         opt.value = str;
         sel.appendChild(opt);
       }
-      //console.log(i+" " + obj.Universidad);i++;
     });
   }
 
-  getCommId(key) {
-    unisIndex.forEach(function (obj) {
-      if (obj.nombre === key) {
-        return obj["id"];
-      }
-    });
-  }
 
-      setCommentsUnis(key,index) { //Función para añadir comentarios al popup
-        console.log(key);
-        var sel = document.getElementById("popUp" + index);
-        console.log(sel);
-        comUni.forEach(function (obj) {
-          if (obj["id_local"] === this.getCommId(key)) {
-            console.log("a");
-            var opt = document.createElement("div");
-            const com = obj.comentario;
-            const stars = obj.calificacion;
-            var pCom = document.createElement("p");
-            var pStars = document.createElement("p");
-            pCom.appendChild(document.createTextNode('"' + com + '"'));
-            pStars.appendChild(document.createTextNode('"' + stars + '"'));
-            opt.appendChild(pCom);
-            opt.appendChild(pStars);
-            sel.appendChild(opt);
-            return;
-          }
-        }
-        );
-      }
 
       top3Careers(dictAux) {
         var dict = { ...dictAux };
@@ -474,10 +461,7 @@ class Results extends React.Component {
           bestsValue.push(parseFloat((aux * 100).toFixed(2)));
           i++;
         } while (i < 3);
-
-        //console.log(bestsKeys);
         var cr = [...this.state.afinity];
-        // console.log(bestsKeys)
         cr[0] = { pregrado: bestsKeys[0], afinidad: bestsValue[0] };
         cr[1] = { pregrado: bestsKeys[1], afinidad: bestsValue[1] };
         cr[2] = { pregrado: bestsKeys[2], afinidad: bestsValue[2] };
@@ -522,20 +506,18 @@ class Results extends React.Component {
               },
             }
           );
-          // console.log(res.data.predictions[0]);
           return res.data.predictions[0];
         } catch (e) {
-          //console.log(e);
           this.errorHandleEvent();
         }
       }
       async componentDidMount() {
         //Función pre-mounting
         if (inputData.isDone === false) {
-          //this.props.history.push("/");
+          //this.props.history.push("/");  //demo
         }
         /*
-            let scoresList = await this.predict_career(
+            let scoresList = await this.predict_career(  //demo
             inputData.res1,
             inputData.res2,
             inputData.res3,
@@ -543,8 +525,8 @@ class Results extends React.Component {
             inputData.res5
             );
             */
-        let dict = await this.setCareersScores([]); //(scoresList);
-        await this.top3Careers(dict);
+        let dict = await this.setCareersScores([]); //(scoresList);  //demo
+        //await this.top3Careers(dict);  //demo
         for (var i = 0; i < 3; i++) this.setSelecterInfo(this.state.afinity[i].pregrado, i + 1);
       }
 
