@@ -413,6 +413,7 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
       careers_prob[element.toLowerCase()] = scores[i];  //demo
       i++;
     });
+    this.setAuxCareerInfo(careers_prob);
     this.setState({ careersAffinities: careers_prob });
     return careers_prob;
   }
@@ -433,18 +434,21 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
         sel.appendChild(opt);
       }
     });
+
+    
   }
 
   setAuxCareerInfo(careers_prob){
         //Selectores
         var sel = document.getElementById("auxCareer");
-        for (const [key, value] of Object.entries(careers_prob)) {
+        console.log(sel);
+        for (var obj in careers_prob) {
           var opt = document.createElement("option");
-          opt.appendChild(document.createTextNode(key));
-          opt.text = key;
-          opt.value = value;
+          opt.appendChild(document.createTextNode(obj));
+          opt.text = obj;
+          opt.value = careers_prob[obj];
           sel.appendChild(opt);
-        }
+        };
   }
 
 
@@ -505,8 +509,8 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
             inputData.res5
             );
         let dict = await this.setCareersScores(scoresList);  //demo
-        this.setAuxCareerInfo(dict);
         await this.top3Careers(dict);  //demo
+        
         for (var i = 0; i < 3; i++) this.setSelecterInfo(this.state.afinity[i].pregrado, i + 1);
       }
 
