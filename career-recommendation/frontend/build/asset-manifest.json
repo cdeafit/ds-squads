@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.ba3afe21.chunk.css",
-    "main.js": "/static/js/main.4731592b.chunk.js",
-    "main.js.map": "/static/js/main.4731592b.chunk.js.map",
+    "main.css": "/static/css/main.6c105540.chunk.css",
+    "main.js": "/static/js/main.4d670faa.chunk.js",
+    "main.js.map": "/static/js/main.4d670faa.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.1526bb37.js",
     "runtime-main.js.map": "/static/js/runtime-main.1526bb37.js.map",
     "static/js/2.e80ce380.chunk.js": "/static/js/2.e80ce380.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.ed12b32f.chunk.js": "/static/js/3.ed12b32f.chunk.js",
     "static/js/3.ed12b32f.chunk.js.map": "/static/js/3.ed12b32f.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.ba3afe21.chunk.css.map": "/static/css/main.ba3afe21.chunk.css.map",
+    "static/css/main.6c105540.chunk.css.map": "/static/css/main.6c105540.chunk.css.map",
     "static/js/2.e80ce380.chunk.js.LICENSE.txt": "/static/js/2.e80ce380.chunk.js.LICENSE.txt",
     "static/media/App.css": "/static/media/carreras.643735d9.png",
     "static/media/career.51c00435.png": "/static/media/career.51c00435.png",
@@ -23,7 +23,7 @@
   "entrypoints": [
     "static/js/runtime-main.1526bb37.js",
     "static/js/2.e80ce380.chunk.js",
-    "static/css/main.ba3afe21.chunk.css",
-    "static/js/main.4731592b.chunk.js"
+    "static/css/main.6c105540.chunk.css",
+    "static/js/main.4d670faa.chunk.js"
   ]
 }
