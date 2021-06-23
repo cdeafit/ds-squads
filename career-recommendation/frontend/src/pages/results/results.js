@@ -416,7 +416,7 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
       careers_prob[element.toLowerCase()] = scores[i];  //demo
       i++;
     });
-    this.setAuxCareerInfo(careers_prob);
+
     this.setState({ careersAffinities: careers_prob });
     return careers_prob;
   }
@@ -516,6 +516,10 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
         await this.top3Careers(dict);  //demo
         
         for (var i = 0; i < 3; i++) this.setSelecterInfo(this.state.afinity[i].pregrado, i + 1);
+      }
+
+      componentDidUpdate(){
+        this.setAuxCareerInfo(this.state.careersAffinities);
       }
 
 
