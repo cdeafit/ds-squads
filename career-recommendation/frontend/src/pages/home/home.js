@@ -127,9 +127,9 @@ class Home extends React.Component {
       const obj = { script: event.target.files[0] };
       const data = new FormData();
       Object.keys(obj).forEach(key => data.append(key, obj[key]));
-      console.log(data.get("script"));
+      //console.log(data.get("script"));
       const res = await axios.post("http://23.96.36.59:8000/api/parsepdf", data);
-      console.log(res.data);
+      //console.log(res.data);
       inputData.res1 = res.data["lectura_critica"];
       inputData.res2 = res.data["matematicas"];
       inputData.res3 = res.data["sociales_y_ciudadanas"];
