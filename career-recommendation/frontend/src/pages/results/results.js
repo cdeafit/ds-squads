@@ -22,15 +22,15 @@ class Results extends React.Component {
     this.state = {
       afinity: [
         {
-          pregrado: "negocios internacionales", //"Carrera1",  //demo
+          pregrado: "Carrera1",  //demo
           afinidad: 96.40,  //demo
         },
         {
-          pregrado: "economia",//"Carrera2",  //demo
+          pregrado:"Carrera2",  //demo
           afinidad: 85.12,  //demo
         },
         {
-          pregrado: "mercadeo",//"Carrera3",  //demo
+          pregrado: "Carrera3",  //demo
           afinidad: 73.54,  //demo
         },
       ],
@@ -47,6 +47,7 @@ class Results extends React.Component {
     this.AuxCareerHandler = this.AuxCareerHandler.bind(this);
     this.setCommentsUnis = this.setCommentsUnis.bind(this);
     document.title = "Career | Results";
+    document.documentElement.scrollTop = 0;
   }
 
   render() {
@@ -409,18 +410,9 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
     var careers_prob = {};
     let i = 0;
     careers.forEach((element) => {
-      careers_prob[element.toLowerCase()] = Math.random()* (0.7 - 0) + 0; // scores[i];  //demo
+      careers_prob[element.toLowerCase()] = scores[i];  //demo
       i++;
     });
-    //Selectores
-    var sel = document.getElementById("auxCareer");
-    for (const [key, value] of Object.entries(careers_prob)) {
-      var opt = document.createElement("option");
-      opt.appendChild(document.createTextNode(key));
-      opt.text = key;
-      opt.value = value;
-      sel.appendChild(opt);
-    }
     this.setState({ careersAffinities: careers_prob });
     return careers_prob;
   }
@@ -443,6 +435,17 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
     });
   }
 
+  setAuxCareerInfo(careers_prob){
+        //Selectores
+        var sel = document.getElementById("auxCareer");
+        for (const [key, value] of Object.entries(careers_prob)) {
+          var opt = document.createElement("option");
+          opt.appendChild(document.createTextNode(key));
+          opt.text = key;
+          opt.value = value;
+          sel.appendChild(opt);
+        }
+  }
 
 
       top3Careers(dictAux) {
@@ -482,31 +485,8 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
       async predict_career(language, math, humanity, science, english) {
         //Función para llamar el modelo en la nube
         try {
-          const body = {
-            instances: [
-              [
-                science,
-                humanity,
-                humanity,
-                science,
-                english,
-                language,
-                math,
-                science,
-              ],
-            ],
-          };
-          const res = await axios.post(
-            `https://thingproxy.freeboard.io/fetch/${modelEndpoint}`,
-            body,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Access-Control-Allow-Origin": "*",
-              },
-            }
-          );
-          return res.data.predictions[0];
+          const res = await axios.get(modelEndpoint,{params: {biologia: science,ciencias_sociales: humanity,filosofia: humanity,fisica: science,ingles: english,lenguaje: language,matematicas: math,quimica: science}});
+          return res.data.scores[0];
         } catch (e) {
           this.errorHandleEvent();
         }
@@ -514,9 +494,9 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
       async componentDidMount() {
         //Función pre-mounting
         if (inputData.isDone === false) {
-          //this.props.history.push("/");  //demo
+          this.props.history.push("/");  //demo
         }
-        /*
+        
             let scoresList = await this.predict_career(  //demo
             inputData.res1,
             inputData.res2,
@@ -524,9 +504,9 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
             inputData.res4,
             inputData.res5
             );
-            */
-        let dict = await this.setCareersScores([]); //(scoresList);  //demo
-        //await this.top3Careers(dict);  //demo
+        let dict = await this.setCareersScores(scoresList);  //demo
+        this.setAuxCareerInfo(dict);
+        await this.top3Careers(dict);  //demo
         for (var i = 0; i < 3; i++) this.setSelecterInfo(this.state.afinity[i].pregrado, i + 1);
       }
 
