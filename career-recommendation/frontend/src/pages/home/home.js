@@ -135,6 +135,7 @@ class Home extends React.Component {
       inputData.res3 = res.data["sociales_y_ciudadanas"];
       inputData.res4 = res.data["ciencias_naturales"];
       inputData.res5 = res.data["ingles"];
+      inputData.isDone = true;
       this.props.history.push("/results");
     }
     catch (e) {

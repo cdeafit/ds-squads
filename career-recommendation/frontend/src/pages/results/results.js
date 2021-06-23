@@ -521,8 +521,6 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
       componentDidUpdate(){
         this.setAuxCareerInfo(this.state.careersAffinities);
       }
-
-
     }
 
 
