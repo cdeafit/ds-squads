@@ -27,8 +27,9 @@
 h1 {
   text-align: center;
   font-family: brandon-black;
-  color: #43414e;
   font-size: 50px;
+  color: #e33b6a;
+  line-height: 0.8em;
 }
 
 h2 {
@@ -54,6 +55,38 @@ h4 {
 p {
   font-family: "Raleway", sans-serif;
 }
+
+.text-animation h1{
+  animation:bounce-in 3s ease 0s 1 normal;
+}
+
+.text-animation h2{
+  color: #FF9F1C;
+  text-align: center;
+  margin: auto;
+  width: 30ch;
+  white-space: nowrap;
+  overflow: hidden;
+  animation:typing 2s steps(30) 0s 1 normal;
+  font-family: monospace;
+  font-size: 2em;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+
+
+
+@keyframes bounce-in {
+  from{ opacity: 0; transform: scale(.3); }
+  25%{ opacity: 1; transform: scale(1.0); }
+  30%{ transform: scale(0.9); }
+  40%{ transform: scale(1); }
+  to{ transform: scale(1);opacity: 1;}
+  }
 
 .flex {
   display: flex;
@@ -115,29 +148,90 @@ img {
   border-radius: 5px;
 }
 
-.upload > .input > div:last-child > div {
+.upload > .input > div:nth-child(3){
+  border: 2px dashed #e33b6b59;
+  padding: 0 30px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
+
+.upload > .input > div:nth-child(3):active{
+  opacity: 1;
+  filter: saturate(1);
+}
+
+.upload > .input > div:nth-child(3) > p{
+  text-align: center;
+  font-family: brandon-regular;
+}
+
+.upload > .input > div:nth-child(3) > div {
   background-color: #480ca8;
   border-radius: 10px;
   padding: 20px;
   width: 180px;
   border: 2px solid #480ca8;
+
 }
 
-.upload > .input > div:last-child > div:hover {
+.upload > .input > div:nth-child(3) > div:hover {
   background-color: #5a1bcf;
   border: 2px solid #06d6a0;
+  
+}
+/*
+.upload > .input > div:nth-child(3) > div:nth-child(2) > h3{
+  color: #480CA8;
+  width: 100%;
 }
 
-.upload > .input > div:last-child > div:last-child {
+.upload > .input > div:nth-child(3) > div:nth-child(2){
+  width: 100%;
   background-color: #ffffff;
-  box-shadow: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.upload > .input > div:nth-child(3) > div:nth-child(2) > input{
+  background-color: #06D6A0;
+  margin: 1em;
+  color: #310872;
+  width: 150px;
+}
+*/
+
+.upload > .input > div:nth-child(3) > div > p{
+  color: white;
+  text-align: center;
+}
+
+.upload > .input > div:nth-child(3) > div:last-child{
+  background: none !important;
+  border:none;
+}
+
+.upload > .input > div:nth-child(3) > div > button {
+  font-family: brandon-bold;
+  font-size: 30px;
   border: none;
+  background-color: #e33b6a;
+  color: white;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  transition: 0.2s;
 }
 
 .upload > .input > div:first-child > div {
   background-image: url(img/carreras.png);
   animation: bg-animation 3s ease-in-out 0s infinite normal;
 }
+
+
+
 
 @keyframes bg-animation {
   0% {
@@ -174,27 +268,9 @@ input:focus {
   outline: none;
 }
 
-.upload > .input > div:last-child > div:last-child  {
-  text-decoration: none;
-}
-
-.upload > .input > div:last-child > div:last-child > button {
-  font-family: brandon-bold;
-  font-size: 18px;
-  border: none;
-  background-color: #e33b6a;
-  color: white;
-  cursor: pointer;
-  display: block;
-  margin: auto;
-  padding: 40px;
-  border-radius: 5px;
-  transition: 0.2s;
-}
-
-.upload > .input > div:last-child > div:last-child  > button:hover {
+.upload > .input > div:last-child > button:hover {
   background-color: #310872;
-  transform: rotate(-10deg);
+  transform: rotate(-5deg);
 }
 
 .upload > .input > div:last-child > div > p {
@@ -202,14 +278,56 @@ input:focus {
   color: #e33b6a;
 }
 
+.upload > .input > div:nth-child(2) {
+  border-radius: 10px;
+}
+
+.upload > .input > div:nth-child(2) > label{
+  width: 220px;
+  height: 114px;
+  background-color: #06D6A0;
+  border-radius: 10px;
+  display: block;
+  padding: 20px;
+  cursor: pointer;
+  font-family: brandon-bold;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #310872;
+  margin-top: 20px;
+  animation:shake 4s ease 3s infinite normal;
+}
+
+@keyframes shake {
+  0%{ transform: rotate(0deg);}
+  3%{ transform: rotate(5deg); }
+  6%{ transform: rotate(-10deg); }
+  9%{ transform: rotate(10deg);}
+  12%{ transform: rotate(-12deg);}
+  15%{ transform: rotate(-10deg);}
+  18%{ transform: rotate(0deg);}
+}
+
+.upload > .input > div:nth-child(2) > label:hover{
+  background-color: #310872;
+  color: #06d6a0;
+  animation-play-state: paused;
+  border-style: dashed !important;
+  border:#06d6a0 4px;
+  
+}
+
+.upload > .input > div:nth-child(2) > input[type=file]{
+  display: none;
+}
+
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-h1 {
-  color: #e33b6a;
 }
 
 .results {
@@ -236,7 +354,8 @@ h1 {
   border-radius: 15px;
 }
 
-.results > div > div > div:last-child > h3 {
+
+.results > div > div > div:last-child > div > h3 {
   font-family: brandon-black;
   color: rgba(255, 255, 255, 0.884);
   mix-blend-mode: overlay;
@@ -245,12 +364,24 @@ h1 {
 }
 
 .results > div > div > div:last-child {
-  background-color: #09be8eb0;
   height: 270px;
   position: relative;
   top: -306px;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column-reverse;
 }
+
+.results > div > div > div:last-child > div{
+  background-color: #09be8eb0;
+  height: 100%;
+  animation:porcentaje 4s ease 0s 1 normal;
+}
+
+@keyframes porcentaje {
+  0%{ height: 0%;}
+  100%{ height: 100%;}
+  }
 
 .results > div > div:last-child {
   background-color: #480ca8;
@@ -352,10 +483,11 @@ h1 {
 
 .results select option {
   background-color: #07ca96;
-  font-size: 12px;
-  color: #ffffff;
+  font-size: 13px;
+  color: #310872;
   font-family: brandon-regular;
 }
+
 
 #cf {
   position:relative;
@@ -376,3 +508,183 @@ h1 {
 #cf img.top:hover {
   opacity:0;
 }
+
+#estrella{
+  width: 120px;
+  height: 24px;
+  margin: auto;
+  background-image: url(img/estrella.png);
+  animation:estrellas 3s steps(5) 1 normal;
+}
+
+#estrellaSolid{
+  width: 120px;
+  height: 24px;
+  margin: auto;
+  background-image: url(img/estrella.png);
+}
+
+@keyframes estrellas{
+  0%{width: 0px;}
+  100%{width: 120px;}
+}
+
+.forms summary{
+  padding: 10px;
+  color: #FF9F1C;
+  font-family: brandon-bold;
+  cursor: pointer;
+}
+.forms summary:focus{
+  border: none;
+  background-color: #480CA8;
+  outline: none;
+}
+
+.forms details{
+  color: #78C0E0;
+  margin-left:-30px;
+  text-align: justify;
+  padding-right: 15px;
+}
+
+.forms details b{
+  color: #06D6A0;
+}
+
+.forms summary + li{
+  border-top: 1px dashed  #06D6A0;
+}
+
+.forms hr{
+  border: 1px dashed #E33B6A;
+  margin-left:-30px;
+}
+
+.forms button{
+  background-color: #480CA8;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin-left: 55px;
+}
+
+.forms button p{
+  text-align: center;
+  color: white;
+  line-height: 1px;
+}
+
+.forms button:hover{
+  background-color:#310872;
+}
+
+.forms button:focus{
+  background-color:#310872;
+  outline: none;
+}
+
+.popup-content{
+  background-color: #310872;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow:0px 0px 10px 0px #202020 ;
+  width: 500px;
+}
+
+.popup-content h3{
+  color: #78C0E0;
+}
+
+.popup-content p{
+  color: #ffffff;
+  text-align: center;
+}
+
+
+.__react_modal_image__header{
+  display: none;
+}
+
+.__react_modal_image__modal_content img, .__react_modal_image__modal_content svg{
+  border-radius: 15px;
+}
+
+.btnDescription {
+  align-content: flex-start;
+}
+
+.btnDescription button {
+  font-family: brandon-bold;
+  font-size: 15px;
+  border: none;
+  background-color: #e33b6a;
+  color: white;
+  cursor: pointer;
+  margin: 5px;
+  padding: 15px;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+
+
+.campos {
+  width: 10em;
+  height: 10em;
+  margin: 10px;
+  display: inline-block;
+  position: sticky;
+  padding: 5px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  
+}
+.members {
+  background-color: #c4c6c9;
+  font-family: Brandon-bold;
+  color: black;
+  margin: 10px;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.members h4 {
+  margin: auto;
+  color: #5a1bcf !important;
+  font-family: brandon-bold;
+}
+.members h3 {
+  margin: auto;
+  color: #310872;
+  font-family: brandon-bold;
+}
+.campos img {
+  width: 10em;
+  margin: 4px;
+}
+
