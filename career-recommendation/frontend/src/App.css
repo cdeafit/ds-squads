@@ -179,7 +179,7 @@ img {
   border: 2px solid #06d6a0;
   
 }
-
+/*
 .upload > .input > div:nth-child(3) > div:nth-child(2) > h3{
   color: #480CA8;
   width: 100%;
@@ -199,6 +199,7 @@ img {
   color: #310872;
   width: 150px;
 }
+*/
 
 .upload > .input > div:nth-child(3) > div > p{
   color: white;
@@ -313,6 +314,9 @@ input:focus {
   background-color: #310872;
   color: #06d6a0;
   animation-play-state: paused;
+  border-style: dashed !important;
+  border:#06d6a0 4px;
+  
 }
 
 .upload > .input > div:nth-child(2) > input[type=file]{
@@ -608,4 +612,79 @@ input::-webkit-inner-spin-button {
   border-radius: 15px;
 }
 
+.btnDescription {
+  align-content: flex-start;
+}
+
+.btnDescription button {
+  font-family: brandon-bold;
+  font-size: 15px;
+  border: none;
+  background-color: #e33b6a;
+  color: white;
+  cursor: pointer;
+  margin: 5px;
+  padding: 15px;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+
+
+.campos {
+  width: 10em;
+  height: 10em;
+  margin: 10px;
+  display: inline-block;
+  position: sticky;
+  padding: 5px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  
+}
+.members {
+  background-color: #c4c6c9;
+  font-family: Brandon-bold;
+  color: black;
+  margin: 10px;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.members h4 {
+  margin: auto;
+  color: #5a1bcf !important;
+  font-family: brandon-bold;
+}
+.members h3 {
+  margin: auto;
+  color: #310872;
+  font-family: brandon-bold;
+}
+.campos img {
+  width: 10em;
+  margin: 4px;
+}
 

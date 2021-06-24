@@ -1,18 +1,14 @@
 import React from "react";
 import sistemas from "../../img/sistemas.jpg";
-//import derecho from "../../img/Derecho.jpg";
-//import nutricion from "../../img/nutricion.jpg";
-import estrellas from "../../img/estrella.png";
 import axios from "axios";
-// import { history } from "../../history";
 import { withRouter } from "react-router-dom";
-import { modelEndpoint, token } from "../../config";
+import { modelEndpoint} from "../../config";
 import { database } from "../../database/databaseParser";
 import { comUni } from "../../database/commentariesParser";
 import { unisIndex } from "../../database/unisIndexParser";
 import inputData from "../../database/inputData";
-import SweetAlert from "sweetalert";
 import Popup from 'reactjs-popup';
+import {funcDetails1,funcDetails2,modelDetails,modelPhotos,membersDetails} from "../../database/Details.js";
 
 
 class Results extends React.Component {
@@ -42,10 +38,12 @@ class Results extends React.Component {
       rca: 100,
       cau: {},
       caucomms: {},
+      details: 0,
     };
     this.SelectorHandler = this.SelectorHandler.bind(this);
     this.AuxCareerHandler = this.AuxCareerHandler.bind(this);
     this.setCommentsUnis = this.setCommentsUnis.bind(this);
+    this.detailsButtonHandler = this.detailsButtonHandler.bind(this);
     document.title = "Career | Results";
     document.documentElement.scrollTop = 0;
     this.selectorRef = React.createRef()
@@ -54,7 +52,7 @@ class Results extends React.Component {
   render() {
     return (
       <>
-        <div className="text-animation"><h1>Hola ¡{inputData.name}!</h1><h2>Las carreras recomendadas son:</h2></div>
+        <div className="text-animation"><h1>!Hola {inputData.name}!</h1><h2>Las carreras recomendadas son:</h2></div>
         <div className="results">
           {this.state.careersUnis.map((career, index) => (
             <div>
@@ -133,7 +131,6 @@ class Results extends React.Component {
                     <div id="estrellaSolid" style={{ width: 24 * this.state.commsUnis[index].calificacion }}></div>
                     <p>{this.state.commsUnis[index].comentario}</p>
                     <p>{this.state.commsUnis[index].tags}</p>
-                    
                   </Popup>
                 </ul>
               </div>
@@ -148,7 +145,6 @@ class Results extends React.Component {
               <h3>¿Quieres saber de otra carrera?</h3>
               <select
                 name="Seleccione una carrera"
-                // id="auxCareer"
                 ref={this.selectorRef}
                 onChange={this.AuxCareerHandler}
               >
@@ -223,31 +219,56 @@ class Results extends React.Component {
               </div>
             </div>
           </div>
-          <div>
-            <h2>¿Cómo funciona?</h2>
-            <p>
+          <div className="btnDescription">
+            <h2>Información de interés</h2>
+            <button id="btndesc1" onClick={(event) => this.detailsButtonHandler(event,1)}>¿Cómo funciona?</button>
+            <button id="btndesc2" onClick={(event) => this.detailsButtonHandler(event,2)}>Detalles del modelo</button>        
+            <button id="btndesc3" onClick={(event) => this.detailsButtonHandler(event,3)}>¿Quiénes somos?</button>     
+          
+            <div>
+            <div>
               <i>
-              Las recomendaciones de carrera basadas en los resultados obtenidos por el estudiante en la prueba saber 11, serán brindadas por un modelo de predicción perteneciente a la categoría de Machine Learning, al cual se le debe pasar como entrada los puntajes obtenidos en la prueba, posterior a esto, la página abrirá una nueva pestaña con tres recomendaciones, las carreras más afines a tus puntajes y el porcentaje de compatibilidad, debajo de cada una de ellas también, podrás obtener una breve descripción con información de utilidad.
+              {this.setDetail(1,this.state.details)}
               </i>
-            </p>
-            <p>
+            </div>
+            <div>
               <i>
-              Adicionalmente, como también se usaron técnicas de web scrapping, en las recomendaciones que recibe el usuario también hay detalles como universidades que ofrecen la carrera, modalidad, créditos, etc.
-Un ejemplo del uso de la herramienta es el siguiente: "Soy estudiante de último año de bachillerato y quiero una recomendación sobre qué carrera elegir. Mis resultados en la prueba Saber 11 fueron: 51 en ciencias naturales, 72 en competencias ciudadanas, 84 en inglés, 75 en español, 80 en matemáticas".
-
-Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en esta situación, entonces puedes buscar la que te gusta, obtendrás un porcentaje de afinidad y la información.
+              {this.setDetail(2,this.state.details)}
               </i>
-            </p>
+            </div>
+            </div>
           </div>
+          
         </div>
       </>
     );
   }
 
+  setDetail(p,m){
+    if(m === 1){
+      if(p === 1) return funcDetails1();
+      if(p === 2)return funcDetails2();
+    }
+    if(m===2){
+      if(p === 1) return modelDetails();
+      if(p === 2) return modelPhotos();
+    }
+    if(m===3) 
+    if(p === 1) return membersDetails();
+  }
+
+  detailsButtonHandler(e,btn){
+    document.getElementById("btndesc1").style.backgroundColor ="#e33b6a";
+    document.getElementById("btndesc2").style.backgroundColor = "#e33b6a";
+    document.getElementById("btndesc3").style.backgroundColor ="#e33b6a";
+    document.getElementById("btndesc"+btn).style.backgroundColor = '#310872';
+    
+    this.setState({details: btn});
+  }
+
   AuxCareerHandler() {
     document.getElementById("career4").style.display = "none";
     this.cleanAuxDropDownList();
-    //var e = document.getElementById("auxCareer");
     var e = this.selectorRef.current
     var c = e.options[e.selectedIndex].text;
     var rc = e.options[e.selectedIndex].value;
@@ -298,16 +319,13 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
     if (i === 3) {
       this.setState({ cau: u });
     } else {
-      const list = this.state.careersUnis.map((item, j) => {
+      this.state.careersUnis.forEach((item, j) => {
         if (j === i) {
           var careersUnis = [...this.state.careersUnis];
           careersUnis[j] = u;
           this.setState({ careersUnis });
         }
       });
-      return {
-        list,
-      };
     }
   };
 
@@ -316,16 +334,13 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
     if (i === 3) {
       this.setState({ caucomms: u });
     } else {
-      const list = this.state.commsUnis.map((item, j) => {
+     this.state.commsUnis.forEach((item, j) => {
         if (j === i) {
           var commsUnis = [...this.state.commsUnis];
           commsUnis[j] = u;
           this.setState({ commsUnis });
         }
       });
-      return {
-        list,
-      };
     }
   };
 
@@ -443,7 +458,6 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
 
   setAuxCareerInfo(careers_prob){
         //Selectores
-        // var sel = document.getElementById("auxCareer");
         var sel = this.selectorRef.current 
         console.log(sel);
         for (var obj in careers_prob) {
@@ -512,6 +526,7 @@ Pero ¿qué pasa si no estás interesado en alguna de estas tres carreras?, en e
             inputData.res4,
             inputData.res5
             );
+            
         let dict = await this.setCareersScores(scoresList);  //demo
         await this.top3Careers(dict);  //demo
         
