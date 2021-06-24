@@ -15,7 +15,7 @@ const App = () => {
       <Link to="/">
         <div id='cf'>
           <img src={logo} alt="" id="logo" draggable="false" />
-        <img src={logoPride} alt="" class="top" draggable="false" />
+        <img src={logoPride} alt="" className="top" draggable="false" />
         </div>
         </Link>
         <p>

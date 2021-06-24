@@ -6,6 +6,7 @@ import loadingIcon from "../../img/carga.gif";
 import axios from "axios";
 import SweetAlert from "sweetalert";
 import inputData from "../../database/inputData";
+import { modelFetch } from "../../config";
 
 class Home extends React.Component {
   //clase principal
@@ -17,11 +18,18 @@ class Home extends React.Component {
       r3: 0,
       r4: 0,
       r5: 0,
-      isLoading: false
+      isLoading: false,
+      onDragState: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.formChangeEvent = this.formChangeEvent.bind(this);
+  }
+
+
+  setLabelText(bool){
+    if(bool) return "Sube aquí el PDF con los resultados de tus ICFES"
+    else return "Arrastra aquí tu PDF";
 
   }
 
@@ -55,12 +63,6 @@ class Home extends React.Component {
       this.props.history.push("/results");
     }
     inputData.isDone = true;
-  }
-
-  handleInputChange(e) {
-    if (e.target.value.match("^[a-zA-Z ]*$") != null) {
-      this.setState({ UserName: e.target.value });
-    }
   }
 
   valueChecker(value, id) {
@@ -128,13 +130,14 @@ class Home extends React.Component {
       const data = new FormData();
       Object.keys(obj).forEach(key => data.append(key, obj[key]));
       //console.log(data.get("script"));
-      const res = await axios.post("http://23.96.36.59:8000/api/parsepdf", data);
+      const res = await axios.post(modelFetch, data);
       //console.log(res.data);
       inputData.res1 = res.data["lectura_critica"];
       inputData.res2 = res.data["matematicas"];
       inputData.res3 = res.data["sociales_y_ciudadanas"];
       inputData.res4 = res.data["ciencias_naturales"];
       inputData.res5 = res.data["ingles"];
+      inputData.name = res.data["apnombre"];
       inputData.isDone = true;
       this.props.history.push("/results");
     }
@@ -162,7 +165,7 @@ class Home extends React.Component {
             </div>
           </div>
           <div>
-            <label for="uploadFile">Sube aquí el PDF con los resultados de tus ICFES</label>
+            <label htmlFor="uploadFile" onMouseLeave={(event) => this.setState({onDragState: true})} onMouseEnter={(event) =>this.setState({onDragState: false})}>{this.setLabelText(this.state.onDragState)}</label>
             <input id="uploadFile" onChange={this.onUploadPdf} type="file" accept=".pdf" />
             {
               this.state.isLoading && (
@@ -177,13 +180,6 @@ class Home extends React.Component {
           </div>
           <div className="flex">
             <p><i>Si no tienes el PDF con los resultados o tienes dificultades para subirlo, también puedes diligenciar el siguiente <b>formulario</b></i></p>
-            <div>
-              <h3>Información personal</h3>
-              <input type="number" placeholder="Número de documento" />
-              <input type="text" placeholder="Nombre" onChange={event => this.formChangeEvent(2, event)} />
-              <input type="email" placeholder="Correo" />
-              <input type="text" placeholder="Departamento" />
-            </div>
             <div>
               <h3>Lectura crítica</h3>
               <p id="ra1" style={{ display: "none" }}>
