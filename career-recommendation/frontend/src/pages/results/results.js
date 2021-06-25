@@ -219,12 +219,12 @@ class Results extends React.Component {
               </div>
             </div>
           </div>
-          <div className="btnDescription">
+          <div>
             <h2>Información de interés</h2>
+            <div className="btnDescription">
             <button id="btndesc1" onClick={(event) => this.detailsButtonHandler(event,1)}>¿Cómo funciona?</button>
-            <button id="btndesc2" onClick={(event) => this.detailsButtonHandler(event,2)}>Detalles del modelo</button>        
-            <button id="btndesc3" onClick={(event) => this.detailsButtonHandler(event,3)}>¿Quiénes somos?</button>     
-          
+            <button id="btndesc2" onClick={(event) => this.detailsButtonHandler(event,2)}>Detalles del modelo</button>          
+            </div>
             <div>
             <div>
               <i>
@@ -260,7 +260,6 @@ class Results extends React.Component {
   detailsButtonHandler(e,btn){
     document.getElementById("btndesc1").style.backgroundColor ="#e33b6a";
     document.getElementById("btndesc2").style.backgroundColor = "#e33b6a";
-    document.getElementById("btndesc3").style.backgroundColor ="#e33b6a";
     document.getElementById("btndesc"+btn).style.backgroundColor = '#310872';
     
     this.setState({details: btn});
