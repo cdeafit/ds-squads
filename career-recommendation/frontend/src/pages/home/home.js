@@ -28,8 +28,8 @@ class Home extends React.Component {
 
 
   setLabelText(bool){
-    if(bool) return "Sube aquí el PDF con los resultados de tus ICFES"
-    else return "Arrastra aquí tu PDF";
+    if(bool) return "Arrastra aquí tu PDF" 
+    else return "Sube aquí el PDF con los resultados de tus ICFES";
 
   }
 
@@ -165,7 +165,7 @@ class Home extends React.Component {
             </div>
           </div>
           <div>
-            <label htmlFor="uploadFile" onMouseLeave={(event) => this.setState({onDragState: true})} onMouseEnter={(event) =>this.setState({onDragState: false})}>{this.setLabelText(this.state.onDragState)}</label>
+            <label htmlFor="uploadFile" onMouseLeave={(event) => this.setState({onDragState: false})} onMouseEnter={(event) =>this.setState({onDragState: true})}>{this.setLabelText(this.state.onDragState)}</label>
             <input id="uploadFile" onChange={this.onUploadPdf} type="file" accept=".pdf" />
             {
               this.state.isLoading && (
