@@ -1,3 +1,3 @@
 export const modelEndpoint =
-  "http://23.96.36.59:443/api/model";
-export const modelFetch = "http://23.96.36.59:443/api/parsepdf";
+  "http://104.209.174.219:443/api/model";
+export const modelFetch = "http://104.209.174.219:443/api/parsepdf";
