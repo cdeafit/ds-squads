@@ -6,6 +6,7 @@ from azure.core.credentials import AzureKeyCredential
 from rest_framework import viewsets, status, generics
 import tensorflow as tf
 from tensorflow.contrib import predictor
+from rest_framework import viewsets
 
 # Create your views here.
 # ruta = "AC201941311901.pdf"
@@ -56,15 +57,15 @@ class ModelView(generics.RetrieveAPIView):
 
     def get(self, request):
 
-        biologia = request.query_params.get("biologia", 0)
-        ciencias_sociales = request.query_params.get("ciencias_sociales", 0)
-        filosofia = request.query_params.get("filosofia", 0)
-        fisica = request.query_params.get("fisica", 0)
-        ingles = request.query_params.get("ingles", 0)
-        lenguaje = request.query_params.get("lenguaje", 0)
-        matematicas = request.query_params.get("matematicas", 0)
-        quimica = request.query_params.get("quimica", 0)
+        biologia = float(request.query_params.get("biologia", 0))
+        ciencias_sociales = float(request.query_params.get("ciencias_sociales", 0))
+        filosofia = float(request.query_params.get("filosofia", 0))
+        fisica = float(request.query_params.get("fisica", 0))
+        ingles = float(request.query_params.get("ingles", 0))
+        lenguaje = float(request.query_params.get("lenguaje", 0))
+        matematicas = float(request.query_params.get("matematicas", 0))
+        quimica = float(request.query_params.get("quimica", 0))
 
         prediction = self.predict_career(
-            biologia, ciencias_sociales, filosofia, fisica, ingles, lenguaje, matematicas, quimica)
+            float(biologia), float(ciencias_sociales), float(filosofia), float(fisica), float(ingles), float(lenguaje), float(matematicas), float(quimica))
         return Response(prediction, status=status.HTTP_200_OK)
