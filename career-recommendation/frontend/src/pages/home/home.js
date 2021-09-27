@@ -1,12 +1,23 @@
-import React from "react";
+import React, {useCallback} from "react";
 import { Lightbox } from "react-modal-image";
 import mujerCareer from "../../img/mujer-career.png";
+
+import davidA from "../../img/members/David Arias.jpeg";
+import davidC from "../../img/members/DavidCalle.png";
+import juanC from "../../img/members/profilepic.png";
+import juanDavid from "../../img/members/JuanDavidE.jpg";
+import miguel from "../../img/members/Miguel.jpg";
+import santiagoC from "../../img/members/SantiagoCartagenaAgudelo.jpeg";
+import sara from "../../img/members/Sara Cortes.jpg";
+import andres from "../../img/members/profilepic.png";
+
 import loadingIcon from "../../img/carga.gif";
 //import { Link } from "react-router-dom";
 import axios from "axios";
 import SweetAlert from "sweetalert";
 import inputData from "../../database/inputData";
 import { modelFetch } from "../../config";
+import {useDropzone} from 'react-dropzone';
 
 class Home extends React.Component {
   //clase principal
@@ -18,12 +29,12 @@ class Home extends React.Component {
       r3: 0,
       r4: 0,
       r5: 0,
-      isLoading: false,
-      onDragState: false
+      isLoading: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.formChangeEvent = this.formChangeEvent.bind(this);
+
   }
 
 
@@ -123,10 +134,10 @@ class Home extends React.Component {
 
   handleFocus = (event) => event.target.select(); //handler de formulario numerico
 
-  onUploadPdf = async (event) => { //Request del pdf
+  handleOnDrop = async (event) => { //Request del pdf
     this.setState({ isLoading: true });
     try {
-      const obj = { script: event.target.files[0] };
+      const obj = { script: event.target.files[0]};
       const data = new FormData();
       Object.keys(obj).forEach(key => data.append(key, obj[key]));
       //console.log(data.get("script"));
@@ -165,8 +176,7 @@ class Home extends React.Component {
             </div>
           </div>
           <div>
-            <label htmlFor="uploadFile" onMouseLeave={(event) => this.setState({onDragState: false})} onMouseEnter={(event) =>this.setState({onDragState: true})}>{this.setLabelText(this.state.onDragState)}</label>
-            <input id="uploadFile" onChange={this.onUploadPdf} type="file" accept=".pdf" />
+            <MyDropzone onDrop={this.handleOnDrop} multiple={false}/>
             {
               this.state.isLoading && (
                 <Lightbox
@@ -240,12 +250,86 @@ class Home extends React.Component {
                 onChange={(event) => this.handleInputChange(event, 5)}
               />
             </div>
-
             <div>
               <button id="submitButton" onClick={this.handleSubmit}>
                 Ver carreras
               </button>
             </div>
+          </div>
+          <div className="members">
+            <h2>Meet us</h2>
+            <a target="_blank" href="https://www.linkedin.com/in/miguelmque/"><div>
+              <img draggable="false" src={miguel} />
+              <div>
+                <h4>Miguel Correa</h4>
+                <p>Developer, Machine Learning and Project Manager</p>
+              </div>
+              <div></div>
+            </div>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/in/dargo99/"><div>
+              <img draggable="false" src={davidA} />
+              <div>
+                <h4>David Arias</h4>
+                <p>Developer, Frontend</p>
+              </div>
+              <div></div>
+            </div>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/in/juangbcalle/"><div>
+              <img draggable="false" src={juanC} />
+              <div>
+                <h4>Juan Calle</h4>
+                <p>Developer, Fullstack</p>
+              </div>
+              <div></div>
+            </div>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/in/juan-david-echeverri-villada-533965196/"><div>
+              <img draggable="false" src={juanDavid} />
+              <div>
+                <h4>Juan David Echeverri</h4>
+                <p>Developer, Azure Cognitive Services and Text Mining</p>
+              </div>
+              <div></div>
+            </div>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/in/sara-valentina-cortés-manrique-41324918a/"><div>
+              <img draggable="false" src={sara} />
+              <div>
+                <h4>Sara Cortés</h4>
+                <p>Assitant, Frontend</p>
+              </div>
+              <div></div>
+            </div>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/in/andres-salazar-galeano/"><div>
+              <img draggable="false" src={andres} />
+              <div>
+                <h4>Andrés Salazar</h4>
+                <p>Developer, Backend</p>
+              </div>
+              <div></div>
+            </div>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/in/santiago-cartagena-092193216/"><div>
+              <img draggable="false" src={santiagoC} />
+              <div>
+                <h4>Santiago Cartagena</h4>
+                <p>Developer, Azure Cognitive Services </p>
+              </div>
+              <div></div>
+            </div>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/in/david-calle-gonzález-5705561b4/"><div>
+              <img draggable="false" src={davidC}/>
+              <div>
+                <h4>David Calle</h4>
+                <p>Developer, Text Mining</p>
+              </div>
+              <div></div>
+            </div>
+            </a>
           </div>
         </div>
       </>
@@ -254,6 +338,48 @@ class Home extends React.Component {
   componentDidMount() {
     document.title = "Career | Home";
   }
+
+}
+
+function MyDropzone() {
+  const onDrop = useCallback(acceptedFiles => {
+    try {
+      const obj = { script: acceptedFiles};
+      const data = new FormData();
+      Object.keys(obj).forEach(key => data.append(key, obj[key]));
+      //console.log(data.get("script"));
+      const res = axios.post(modelFetch, data);
+      //console.log(res.data);
+      inputData.res1 = res.data["lectura_critica"];
+      inputData.res2 = res.data["matematicas"];
+      inputData.res3 = res.data["sociales_y_ciudadanas"];
+      inputData.res4 = res.data["ciencias_naturales"];
+      inputData.res5 = res.data["ingles"];
+      inputData.isDone = true;
+      this.props.history.push("/results");
+    }
+    catch (e) {
+      SweetAlert({
+        title: "Error al leer archivo",
+        text: "No hemos podido reconocer tu archivo PDF, si sigues presentando este problema, por favor, diligencia el formulario.",
+        icon: "error",
+      });
+    }
+  }, [])
+  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+
+  return (
+    <div {...getRootProps()}>
+      <input {...getInputProps()} />
+      {
+        isDragActive ?
+        <div id="soltar"><h2>Soltar aquí</h2>
+        </div> :
+        <div id="uploadFile"><h2>Sube o suelta tus archivos aquí</h2></div>
+      }
+    </div>
+
+  )
 }
 
 export default Home;

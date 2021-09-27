@@ -11,8 +11,8 @@ from rest_framework import viewsets
 # Create your views here.
 # ruta = "AC201941311901.pdf"
 json_file = "results.json"
-endpoint = "https://southcentralus.api.cognitive.microsoft.com/"
-credential = AzureKeyCredential("21e184065b864942b0915c655bbf3560")
+endpoint = "https://form-recognizer-service-hackaton.cognitiveservices.azure.com/"
+credential = AzureKeyCredential("02983cfe55be4427a606086b63cafaa1")
 
 
 class ReportView(generics.RetrieveAPIView):
@@ -20,14 +20,14 @@ class ReportView(generics.RetrieveAPIView):
     def post(self, request):
 
         form_recognizer_client = FormRecognizerClient(endpoint, credential)
-        model_id = "854c6870-3a84-4e76-963f-ad1edd7f1364"
+        model_id = "bf7a60a1-cd32-4783-a827-c1da30aa7162"
         poller = form_recognizer_client.begin_recognize_custom_forms(
             model_id=model_id, form=request.data['script'])
         result = poller.result()
-        cleaned_data = {}
-        values = result[0].fields['pruebas'].value['puntajes'].value
-        for key, value1 in values.items():
-            cleaned_data[key] = value1.value
+        pruebas = result[0].fields['IcfesLabeled'].value['prueba'].value
+        puntajes = result[0].fields['IcfesLabeled'].value['valor'].value
+        items = result[0].fields['IcfesLabeled'].value['prueba'].value.keys()
+        cleaned_data = {pruebas[key].value_data.text:int(puntajes[key].value_data.text) for key in items}
         return Response(cleaned_data, status=status.HTTP_200_OK)
 
 
@@ -56,16 +56,12 @@ class ModelView(generics.RetrieveAPIView):
         return predictions
 
     def get(self, request):
+        labels = ["biologia", "ciencias_sociales", "filosofia", "fisica", "ingles", "lenguaje", "matematicas", "quimica"]
 
-        biologia = float(request.query_params.get("biologia", 0))
-        ciencias_sociales = float(request.query_params.get("ciencias_sociales", 0))
-        filosofia = float(request.query_params.get("filosofia", 0))
-        fisica = float(request.query_params.get("fisica", 0))
-        ingles = float(request.query_params.get("ingles", 0))
-        lenguaje = float(request.query_params.get("lenguaje", 0))
-        matematicas = float(request.query_params.get("matematicas", 0))
-        quimica = float(request.query_params.get("quimica", 0))
+        scores = []
 
-        prediction = self.predict_career(
-            float(biologia), float(ciencias_sociales), float(filosofia), float(fisica), float(ingles), float(lenguaje), float(matematicas), float(quimica))
+        for l in labels:
+            scores.append(request.query_params.get(l, 0))
+        scores = [float(x -  min(scores)/(max(scores) - min(scores))) for x in scores]
+        prediction = self.predict_career(scores[0], scores[1], scores[2], scores[3], scores[4], scores[5], scores[6], scores[7])
         return Response(prediction, status=status.HTTP_200_OK)
