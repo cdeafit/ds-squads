@@ -56,12 +56,16 @@ class ModelView(generics.RetrieveAPIView):
         return predictions
 
     def get(self, request):
-        labels = ["biologia", "ciencias_sociales", "filosofia", "fisica", "ingles", "lenguaje", "matematicas", "quimica"]
 
-        scores = []
+        biologia = float(request.query_params.get("biologia", 0))
+        ciencias_sociales = float(request.query_params.get("ciencias_sociales", 0))
+        filosofia = float(request.query_params.get("filosofia", 0))
+        fisica = float(request.query_params.get("fisica", 0))
+        ingles = float(request.query_params.get("ingles", 0))
+        lenguaje = float(request.query_params.get("lenguaje", 0))
+        matematicas = float(request.query_params.get("matematicas", 0))
+        quimica = float(request.query_params.get("quimica", 0))
 
-        for l in labels:
-            scores.append(request.query_params.get(l, 0))
-        scores = [float(x -  min(scores)/(max(scores) - min(scores))) for x in scores]
-        prediction = self.predict_career(scores[0], scores[1], scores[2], scores[3], scores[4], scores[5], scores[6], scores[7])
+        prediction = self.predict_career(
+            float(biologia), float(ciencias_sociales), float(filosofia), float(fisica), float(ingles), float(lenguaje), float(matematicas), float(quimica))
         return Response(prediction, status=status.HTTP_200_OK)
