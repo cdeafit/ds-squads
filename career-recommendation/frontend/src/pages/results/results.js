@@ -473,11 +473,11 @@ class Results extends React.Component {
         }
         
             let scoresList = await this.predict_career(  //demo
-            inputData.res1,
-            inputData.res2,
-            inputData.res3,
-            inputData.res4,
-            inputData.res5
+           parseFloat(inputData.res1),
+           parseFloat(inputData.res2),
+           parseFloat(inputData.res3),
+           parseFloat(inputData.res4),
+           parseFloat(inputData.res5)
             );
             
         let dict = await this.setCareersScores(scoresList);  //demo
