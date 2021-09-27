@@ -1,5 +1,5 @@
-cd career-recommendation 
-cd frontend
+cd ../career-recommendation 
+cd ../career-recommendation/frontend
 npm cache clean --force
 npm cache verify
 rm -rf node_modules
