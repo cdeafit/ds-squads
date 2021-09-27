@@ -17,5 +17,5 @@ Including another URLconf
 from django.urls import path, include
 # from django.conf import settings
 urlpatterns = [
-    path('api/', include("backend.urls")),
+    path('api/', include("backend.urls"),name='career'),
 ]

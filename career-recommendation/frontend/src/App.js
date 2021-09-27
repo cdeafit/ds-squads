@@ -3,7 +3,7 @@ import Results from "./pages/results/results";
 import { Switch, Route, Link, Redirect} from "react-router-dom";
 import Home from "./pages/home/home";
 import logo from './img/career.png';
-import logoPride from './img/pride.png';
+//import logoPride from './img/pride.png';
 import NotFound from './pages/notFound/notFound';
 
 
@@ -14,8 +14,7 @@ const App = () => {
       <div className="main">
       <Link to="/">
         <div id='cf'>
-          <img src={logo} alt="" id="logo" draggable="false" />
-        <img src={logoPride} alt="" className="top" draggable="false" />
+          <img src={logo} alt="" id="logo" draggable="false"/>
         </div>
         </Link>
         <p>

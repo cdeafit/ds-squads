@@ -8,7 +8,6 @@ import { comUni } from "../../database/commentariesParser";
 import { unisIndex } from "../../database/unisIndexParser";
 import inputData from "../../database/inputData";
 import Popup from 'reactjs-popup';
-import {funcDetails1,funcDetails2,modelDetails,modelPhotos,membersDetails} from "../../database/Details.js";
 
 
 class Results extends React.Component {
@@ -43,7 +42,6 @@ class Results extends React.Component {
     this.SelectorHandler = this.SelectorHandler.bind(this);
     this.AuxCareerHandler = this.AuxCareerHandler.bind(this);
     this.setCommentsUnis = this.setCommentsUnis.bind(this);
-    this.detailsButtonHandler = this.detailsButtonHandler.bind(this);
     document.title = "Career | Results";
     document.documentElement.scrollTop = 0;
     this.selectorRef = React.createRef()
@@ -52,7 +50,7 @@ class Results extends React.Component {
   render() {
     return (
       <>
-        <div className="text-animation"><h1>!Hola {inputData.name}!</h1><h2>Las carreras recomendadas son:</h2></div>
+        <div className="text-animation"><h1>¡Hola {inputData.name}!</h1><h2>Las carreras recomendadas son:</h2></div>
         <div className="results">
           {this.state.careersUnis.map((career, index) => (
             <div>
@@ -137,10 +135,7 @@ class Results extends React.Component {
             </div>
           ))
           }
-          <div></div>
-        </div >
-        <div className="flex plus">
-          <div className="another results">
+                    <div className="another results">
             <form>
               <h3>¿Quieres saber de otra carrera?</h3>
               <select
@@ -214,56 +209,15 @@ class Results extends React.Component {
                     <p>{this.state.caucomms.calificacion}</p>
                     <p>{this.state.caucomms.comentario}</p>
                   </Popup>
-
                 </ul>
               </div>
             </div>
           </div>
-          <div>
-            <h2>Información de interés</h2>
-            <div className="btnDescription">
-            <button id="btndesc1" onClick={(event) => this.detailsButtonHandler(event,1)}>¿Cómo funciona?</button>
-            <button id="btndesc2" onClick={(event) => this.detailsButtonHandler(event,2)}>Detalles del modelo</button>          
-            </div>
-            <div>
-            <div>
-              <i>
-              {this.setDetail(1,this.state.details)}
-              </i>
-            </div>
-            <div>
-              <i>
-              {this.setDetail(2,this.state.details)}
-              </i>
-            </div>
-            </div>
-          </div>
-          
-        </div>
+        </div >
       </>
     );
   }
 
-  setDetail(p,m){
-    if(m === 1){
-      if(p === 1) return funcDetails1();
-      if(p === 2)return funcDetails2();
-    }
-    if(m===2){
-      if(p === 1) return modelDetails();
-      if(p === 2) return modelPhotos();
-    }
-    if(m===3) 
-    if(p === 1) return membersDetails();
-  }
-
-  detailsButtonHandler(e,btn){
-    document.getElementById("btndesc1").style.backgroundColor ="#e33b6a";
-    document.getElementById("btndesc2").style.backgroundColor = "#e33b6a";
-    document.getElementById("btndesc"+btn).style.backgroundColor = '#310872';
-    
-    this.setState({details: btn});
-  }
 
   AuxCareerHandler() {
     document.getElementById("career4").style.display = "none";
@@ -458,7 +412,7 @@ class Results extends React.Component {
   setAuxCareerInfo(careers_prob){
         //Selectores
         var sel = this.selectorRef.current 
-        console.log(sel);
+        //console.log(sel);
         for (var obj in careers_prob) {
           var opt = document.createElement("option");
           opt.appendChild(document.createTextNode(obj));
