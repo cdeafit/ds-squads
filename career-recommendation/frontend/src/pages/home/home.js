@@ -1,9 +1,9 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useState} from "react";
 import { Lightbox } from "react-modal-image";
 import mujerCareer from "../../img/mujer-career.png";
 
 import davidA from "../../img/members/David Arias.jpeg";
-import davidC from "../../img/members/DavidCalle.png";
+import davidC from "../../img/members/DavidCalle.PNG";
 import juanC from "../../img/members/profilepic.png";
 import juanDavid from "../../img/members/JuanDavidE.jpg";
 import miguel from "../../img/members/Miguel.jpg";
@@ -258,8 +258,8 @@ class Home extends React.Component {
           </div>
           <div className="members">
             <h2>Meet us</h2>
-            <a target="_blank" href="https://www.linkedin.com/in/miguelmque/"><div>
-              <img draggable="false" src={miguel} />
+            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/miguelmque/"><div>
+              <img draggable="false" alt="" src={miguel} />
               <div>
                 <h4>Miguel Correa</h4>
                 <p>Developer, Machine Learning and Project Manager</p>
@@ -267,8 +267,8 @@ class Home extends React.Component {
               <div></div>
             </div>
             </a>
-            <a target="_blank" href="https://www.linkedin.com/in/dargo99/"><div>
-              <img draggable="false" src={davidA} />
+            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/dargo99/"><div>
+              <img draggable="false" alt="" src={davidA} />
               <div>
                 <h4>David Arias</h4>
                 <p>Developer, Frontend</p>
@@ -276,8 +276,8 @@ class Home extends React.Component {
               <div></div>
             </div>
             </a>
-            <a target="_blank" href="https://www.linkedin.com/in/juangbcalle/"><div>
-              <img draggable="false" src={juanC} />
+            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/juangbcalle/"><div>
+              <img draggable="false" alt="" src={juanC} />
               <div>
                 <h4>Juan Calle</h4>
                 <p>Developer, Fullstack</p>
@@ -285,8 +285,8 @@ class Home extends React.Component {
               <div></div>
             </div>
             </a>
-            <a target="_blank" href="https://www.linkedin.com/in/juan-david-echeverri-villada-533965196/"><div>
-              <img draggable="false" src={juanDavid} />
+            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/juan-david-echeverri-villada-533965196/"><div>
+              <img draggable="false" alt="" src={juanDavid} />
               <div>
                 <h4>Juan David Echeverri</h4>
                 <p>Developer, Azure Cognitive Services and Text Mining</p>
@@ -294,8 +294,8 @@ class Home extends React.Component {
               <div></div>
             </div>
             </a>
-            <a target="_blank" href="https://www.linkedin.com/in/sara-valentina-cortés-manrique-41324918a/"><div>
-              <img draggable="false" src={sara} />
+            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/sara-valentina-cortés-manrique-41324918a/"><div>
+              <img draggable="false" alt="" src={sara} />
               <div>
                 <h4>Sara Cortés</h4>
                 <p>Assitant, Frontend</p>
@@ -303,8 +303,8 @@ class Home extends React.Component {
               <div></div>
             </div>
             </a>
-            <a target="_blank" href="https://www.linkedin.com/in/andres-salazar-galeano/"><div>
-              <img draggable="false" src={andres} />
+            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/andres-salazar-galeano/"><div>
+              <img draggable="false" alt="" src={andres} />
               <div>
                 <h4>Andrés Salazar</h4>
                 <p>Developer, Backend</p>
@@ -312,8 +312,8 @@ class Home extends React.Component {
               <div></div>
             </div>
             </a>
-            <a target="_blank" href="https://www.linkedin.com/in/santiago-cartagena-092193216/"><div>
-              <img draggable="false" src={santiagoC} />
+            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/santiago-cartagena-092193216/"><div>
+              <img draggable="false" alt="" src={santiagoC} />
               <div>
                 <h4>Santiago Cartagena</h4>
                 <p>Developer, Azure Cognitive Services </p>
@@ -321,8 +321,8 @@ class Home extends React.Component {
               <div></div>
             </div>
             </a>
-            <a target="_blank" href="https://www.linkedin.com/in/david-calle-gonzález-5705561b4/"><div>
-              <img draggable="false" src={davidC}/>
+            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/david-calle-gonzález-5705561b4/"><div>
+              <img draggable="false" alt="" src={davidC}/>
               <div>
                 <h4>David Calle</h4>
                 <p>Developer, Text Mining</p>
@@ -342,14 +342,16 @@ class Home extends React.Component {
 }
 
 function MyDropzone() {
-  const onDrop = useCallback(acceptedFiles => {
+  const [isLoading,setIsLoading] = useState(false);
+  const onDrop = useCallback(async acceptedFiles => {
     try {
-      const obj = { script: acceptedFiles};
+      setIsLoading(true);
+      const obj = { script: acceptedFiles[0] };
       const data = new FormData();
       Object.keys(obj).forEach(key => data.append(key, obj[key]));
-      //console.log(data.get("script"));
-      const res = axios.post(modelFetch, data);
-      //console.log(res.data);
+      console.log(data.get('script'));
+      const res = await axios.post(modelFetch,{params: {script: acceptedFiles[0]}});
+      console.log(res.data);
       inputData.res1 = res.data["lectura_critica"];
       inputData.res2 = res.data["matematicas"];
       inputData.res3 = res.data["sociales_y_ciudadanas"];
@@ -359,6 +361,7 @@ function MyDropzone() {
       this.props.history.push("/results");
     }
     catch (e) {
+      setIsLoading(false);
       SweetAlert({
         title: "Error al leer archivo",
         text: "No hemos podido reconocer tu archivo PDF, si sigues presentando este problema, por favor, diligencia el formulario.",
@@ -377,6 +380,17 @@ function MyDropzone() {
         </div> :
         <div id="uploadFile"><h2>Sube o suelta tus archivos aquí</h2></div>
       }
+      {
+        isLoading && (
+          <Lightbox
+            hideZoom={true}
+            hideDownload={true}
+            medium={loadingIcon}
+            large={loadingIcon}
+          />
+        )
+      }
+      
     </div>
 
   )

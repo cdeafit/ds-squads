@@ -135,7 +135,9 @@ class Results extends React.Component {
             </div>
           ))
           }
-                    <div className="another results">
+        </div >
+        <div className="flex plus">
+          <div className="another results">
             <form>
               <h3>¿Quieres saber de otra carrera?</h3>
               <select
@@ -209,11 +211,13 @@ class Results extends React.Component {
                     <p>{this.state.caucomms.calificacion}</p>
                     <p>{this.state.caucomms.comentario}</p>
                   </Popup>
+
                 </ul>
               </div>
             </div>
           </div>
-        </div >
+
+        </div>
       </>
     );
   }
@@ -384,10 +388,11 @@ class Results extends React.Component {
       careers_prob[element.toLowerCase()] = scores[i];  //demo
       i++;
     });
-
     this.setState({ careersAffinities: careers_prob });
     return careers_prob;
   }
+
+
 
   errorHandleEvent() {
     this.props.history.push("/404");
@@ -461,11 +466,15 @@ class Results extends React.Component {
         //Función para llamar el modelo en la nube
         try {
           const res = await axios.get(modelEndpoint,{params: {biologia: science,ciencias_sociales: humanity,filosofia: humanity,fisica: science,ingles: english,lenguaje: language,matematicas: math,quimica: science}});
-          return res.data.scores[0];
+          //normalizing vector
+          const normalize = require('array-normalize');
+          var array = normalize(res.data.scores[0]);
+          return array;
         } catch (e) {
           this.errorHandleEvent();
         }
       }
+
       async componentDidMount() {
         //Función pre-mounting
         if (inputData.isDone === false) {
@@ -479,7 +488,6 @@ class Results extends React.Component {
            parseFloat(inputData.res4),
            parseFloat(inputData.res5)
             );
-            
         let dict = await this.setCareersScores(scoresList);  //demo
         await this.top3Careers(dict);  //demo
         
@@ -490,6 +498,7 @@ class Results extends React.Component {
         this.setAuxCareerInfo(this.state.careersAffinities);
       }
     }
+  
 
 
 
